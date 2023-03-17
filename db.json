@@ -1,0 +1,171 @@
+{
+  "board": [
+    {
+      "title": "바나나우유",
+      "classNumber": "13기",
+      "specialty": "Spring",
+      "createdAt": "2023-03-14T16:27:25.953604",
+      "nickname": "멘토스",
+      "postId": 1
+    },
+    {
+      "title": "바나나우유",
+      "classNumber": "13기",
+      "specialty": "Spring",
+      "createdAt": "2023-03-14T16:27:25.953604",
+      "nickname": "멘토스",
+      "postId": 2
+    },
+    {
+      "title": "바나나우유",
+      "classNumber": "13기",
+      "specialty": "Spring",
+      "createdAt": "2023-03-14T16:27:25.953604",
+      "nickname": "멘토스",
+      "postId": 3
+    },
+    {
+      "title": "바나나우유",
+      "classNumber": "13기",
+      "specialty": "Spring",
+      "createdAt": "2023-03-14T16:27:25.953604",
+      "nickname": "멘토스",
+      "postId": 4
+    },
+    {
+      "title": "바나나우유",
+      "classNumber": "13기",
+      "specialty": "Spring",
+      "createdAt": "2023-03-14T16:27:25.953604",
+      "nickname": "멘토스",
+      "postId": 5
+    },
+    {
+      "title": "바나나우유",
+      "classNumber": "13기",
+      "specialty": "Spring",
+      "createdAt": "2023-03-14T16:27:25.953604",
+      "nickname": "멘토스",
+      "postId": 6
+    },
+    {
+      "title": "바나나우유",
+      "classNumber": "13기",
+      "specialty": "Spring",
+      "createdAt": "2023-03-14T16:27:25.953604",
+      "nickname": "멘토스",
+      "postId": 7
+    },
+    {
+      "title": "바나나우유",
+      "classNumber": "13기",
+      "specialty": "Spring",
+      "createdAt": "2023-03-14T16:27:25.953604",
+      "nickname": "멘토스",
+      "postId": 8
+    },
+    {
+      "title": "바나나우유",
+      "classNumber": "13기",
+      "specialty": "Spring",
+      "createdAt": "2023-03-14T16:27:25.953604",
+      "nickname": "멘토스",
+      "postId": 9
+    },
+    {
+      "title": "바나나우유",
+      "classNumber": "13기",
+      "specialty": "Spring",
+      "createdAt": "2023-03-14T16:27:25.953604",
+      "nickname": "멘토스",
+      "postId": 10
+    },
+    {
+      "title": "바나나우유",
+      "classNumber": "13기",
+      "specialty": "Spring",
+      "createdAt": "2023-03-14T16:27:25.953604",
+      "nickname": "멘토스",
+      "postId": 11
+    },
+    {
+      "title": "바나나우유",
+      "classNumber": "13기",
+      "specialty": "Spring",
+      "createdAt": "2023-03-14T16:27:25.953604",
+      "nickname": "멘토스",
+      "postId": 12
+    },
+    {
+      "title": "바나나우유",
+      "classNumber": "13기",
+      "specialty": "Spring",
+      "createdAt": "2023-03-14T16:27:25.953604",
+      "nickname": "멘토스",
+      "postId": 13
+    },
+    {
+      "title": "바나나우유",
+      "classNumber": "13기",
+      "specialty": "Spring",
+      "createdAt": "2023-03-14T16:27:25.953604",
+      "nickname": "멘토스",
+      "postId": 14
+    },
+    {
+      "title": "바나나우유",
+      "classNumber": "13기",
+      "specialty": "Spring",
+      "createdAt": "2023-03-14T16:27:25.953604",
+      "nickname": "멘토스",
+      "postId": 15
+    },
+    {
+      "title": "바나나우유",
+      "classNumber": "13기",
+      "specialty": "Spring",
+      "createdAt": "2023-03-14T16:27:25.953604",
+      "nickname": "멘토스",
+      "postId": 16
+    },
+    {
+      "title": "바나나우유",
+      "classNumber": "13기",
+      "specialty": "Spring",
+      "createdAt": "2023-03-14T16:27:25.953604",
+      "nickname": "멘토스",
+      "postId": 17
+    },
+    {
+      "title": "바나나우유",
+      "classNumber": "13기",
+      "specialty": "Spring",
+      "createdAt": "2023-03-14T16:27:25.953604",
+      "nickname": "멘토스",
+      "postId": 18
+    }
+  ],
+  "detail": [
+    {
+      "title": "title",
+      "content": "content",
+      "createdAt": "2023-03-14T16:27:25.953604",
+      "nickname": "멘토스",
+      "postId": 27,
+      "commentList": [
+        {
+          "comment": "comment1",
+          "createdAt": "2023-03-14T18:27:25.253601",
+          "commentId": 1,
+          "nickname": "피카츄"
+        },
+        {
+          "comment": "comment2",
+          "createdAt": "2023-03-14T20:17:13.430502",
+          "commentId": 2,
+          "nickname": "파이리"
+        }
+      ]
+    }
+  ]
+}
