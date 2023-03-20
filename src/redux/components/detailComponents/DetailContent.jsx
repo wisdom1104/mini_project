@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { __getBoard } from "../../modules/boradSlice";
 import {
   __deleteDetail,
@@ -13,66 +13,59 @@ function DetailContent({ detail, postId }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [edit, setEdit] = useState(false);
-  // const { id } = useParams();
-
-  // // console.log("detail", detail);
-  // // console.log("id", id);
-
-  // const detail = detail.find((el) => {
-  //   return el.id === Number(id);
-  // });
-  // console.log(detail);
-  // console.log(detail.title);
 
   //삭제
   const onDeleteDetailHandler = async (postId) => {
-    await dispatch(__deleteDetail(postId));
+    dispatch(__deleteDetail(postId));
+
     await dispatch(__getBoard);
     await navigate(`/board`);
     await alert("삭제완료!");
-    console.log(postId);
+    // console.log(postId);
   };
 
   //수정
-  const [editTitle, setEditTitle] = useState(detail.title);
-  const [editContent, setEditContent] = useState(detail.content);
-  const [editClassNumber, setEditClassNumber] = useState(detail.classNumber);
-  const [editSpecialty, setEditSpecialty] = useState(detail.specialty);
+  const [editTitle, setEditTitle] = useState(detail?.title || "");
+  const [editContent, setEditContent] = useState(detail?.content || "");
+  const [editClassNumber, setEditClassNumber] = useState(
+    detail?.classNumber || ""
+  );
+  const [editSpecialty, setEditSpecialty] = useState(detail?.specialty || "");
 
   //수정
   const onEditDetailHandler = async () => {
     const payload = {
-      id: detail.id,
+      postId,
       title: editTitle,
       content: editContent,
       classNumber: editClassNumber,
       specialty: editSpecialty,
     };
-    console.log(payload);
-    await dispatch(__editDetail(payload, postId));
+    // console.log(postId);
+    dispatch(__editDetail(payload));
     await dispatch(__getDetail(postId));
-    setEdit(!edit);
+    await setEdit(!edit);
     // console.log(editTitle);
     // console.log(editSpecialty);
   };
+  // console.log(detail);
 
-  // const location = useLocation();
-  // const postId = location.pathname.split("detail/")[1];
-  // console.log(location);
-  // console.log(postId);
+  if (!detail) {
+    return <div>로딩 중...</div>;
+  }
 
   return (
     <>
       <div>DetailContent</div>
-      <div>{detail.id}</div>
-      <div>{detail.nickname}</div>
-      <div>{detail.createdAt}</div>
+      <div>ID:{detail.id}</div>
+      <div>닉네임:{detail.nickname}</div>
+      <div>작성시간:{detail.createdAt}</div>
       {!edit ? (
         <div>
-          <div>{detail.title}</div>
-          <div>{detail.content}</div>
-          <div>{detail.classNumber}</div>
-          <div>{detail.specialty}</div>
+          <div>제목: {detail.title}</div>
+          <div>내용: {detail.content}</div>
+          <div>기수: {detail.classNumber}</div>
+          <div>주특기: {detail.specialty}</div>
           <Button
             borderColor={"#5385e7"}
             text={"수정하기"}
@@ -90,6 +83,7 @@ function DetailContent({ detail, postId }) {
         </div>
       ) : (
         <div>
+          <label>제목:</label>
           <input
             type="text"
             value={editTitle}
@@ -97,6 +91,8 @@ function DetailContent({ detail, postId }) {
               setEditTitle(e.target.value);
             }}
           />
+          <label>내용:</label>
+
           <input
             type="text"
             value={editContent}
@@ -104,6 +100,8 @@ function DetailContent({ detail, postId }) {
               setEditContent(e.target.value);
             }}
           />
+          <label>기수:</label>
+
           <input
             type="text"
             value={editClassNumber}
@@ -111,6 +109,8 @@ function DetailContent({ detail, postId }) {
               setEditClassNumber(e.target.value);
             }}
           />
+          <label>주특기:</label>
+
           <input
             type="text"
             value={editSpecialty}

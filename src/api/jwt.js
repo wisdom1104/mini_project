@@ -1,0 +1,5 @@
+export const jwt =
+  //관리자
+  // "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjU1NSIsImF1dGgiOiJBRE1JTiIsImV4cCI6MTY3OTMxNDU0MywiaWF0IjoxNjc5MzEwOTQzfQ.j1ETQEGeLcEnoxzlromq0VhP9YCfhtd63WBBJ8Q2eqc";
+  //일반
+  "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MTEiLCJhdXRoIjoiVVNFUiIsImV4cCI6MTY3OTMxODU2OCwiaWF0IjoxNjc5MzE0OTY4fQ.w8L_3XiN20j-UGWsP9SWJMO35jCKjrhubAT7iaKY2Mg";

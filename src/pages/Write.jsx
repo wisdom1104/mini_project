@@ -16,19 +16,14 @@ function Write() {
 
   const submitHandler = async () => {
     dispatch(__addWrite({ classNumber, specialty, title, content }));
-    dispatch(__getBoard());
-    setClassNumber("");
-    setSpecialty("");
-    setTitle("");
-    setContent("");
-    // alert("업로드 성공!");
-    // await navigate(`/board`);
-
-    // title
-    // content
-    // classNumber
-    // specialty
+    await dispatch(__getBoard());
+    await setClassNumber("");
+    await setSpecialty("");
+    await setTitle("");
+    await setContent("");
+    await navigate(`/board`);
   };
+
   return (
     <>
       <form

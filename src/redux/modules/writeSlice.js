@@ -1,23 +1,35 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-const jwt =
-  "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjU1NSIsImF1dGgiOiJBRE1JTiIsImV4cCI6MTY3OTI3NzUzOCwiaWF0IjoxNjc5MjczOTM4fQ.nTdK38-hV_t1IKw03EGQnmu-u2JMqVoVyMKykjUPBj8";
+import { jwt } from "../../api/jwt";
 
 //추가
-export const __addWrite = createAsyncThunk("addWrite", async (newWrite) => {
-  await axios.post(
-    `${process.env.REACT_APP_SERVER_URL}/api/posts`,
-    {
-      headers: {
-        Authorization: `Bearer ${jwt}`,
-      },
-    },
-    // `${process.env.REACT_APP_SERVER_KEY}/write`,
-    newWrite
-  );
-});
+export const __addWrite = createAsyncThunk(
+  "addWrite",
+  async (newWrite, thunkAPI) => {
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_SERVER_URL}/api/posts`,
+        newWrite,
+        {
+          headers: {
+            Authorization: `${jwt}`,
+          },
+        }
+      );
+      alert("업로드 성공!");
+      console.log(response.data);
+      return thunkAPI.fulfillWithValue(response.data);
+    } catch (error) {
+      const errorMag = error.response.data.msg;
+      console.log(error);
+      alert(`${errorMag}`);
+      return;
+    }
+  }
+);
 
 const initialState = {
+  mag: "",
   write: [],
   isLoading: false,
   error: null,

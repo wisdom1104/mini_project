@@ -1,19 +1,18 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-const jwt =
-  "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjU1NSIsImF1dGgiOiJBRE1JTiIsImV4cCI6MTY3OTI3NzUzOCwiaWF0IjoxNjc5MjczOTM4fQ.nTdK38-hV_t1IKw03EGQnmu-u2JMqVoVyMKykjUPBj8";
+import { jwt } from "../../api/jwt";
 
 //조회
 export const __getDetail = createAsyncThunk(
   "getDetail",
   async (postId, thunkAPI) => {
-    console.log(postId);
+    // console.log(postId);
     try {
       const response = await axios.get(
         `${process.env.REACT_APP_SERVER_URL}/api/posts/${postId}`,
         {
           headers: {
-            Authorization: `Bearer ${jwt}`,
+            Authorization: `${jwt}`,
           },
         }
       );
@@ -28,13 +27,14 @@ export const __getDetail = createAsyncThunk(
 //삭제
 export const __deleteDetail = createAsyncThunk(
   "deleteDetail",
-  async (postId, thunkAPI) => {
+  async (postId) => {
     // console.log(postId);
+
     await axios.delete(
       `${process.env.REACT_APP_SERVER_URL}/api/posts/${postId}`,
       {
         headers: {
-          Authorization: `Bearer ${jwt}`,
+          Authorization: `${jwt}`,
         },
       }
     );
@@ -42,23 +42,32 @@ export const __deleteDetail = createAsyncThunk(
 );
 
 //수정
-export const __editDetail = createAsyncThunk(
-  "editDetail",
-  async (payload, postId) => {
-    console.log(payload);
-    console.log(postId);
+export const __editDetail = createAsyncThunk("editDetail", async (payload) => {
+  // console.log(payload);
+  // console.log(payload.postId);
+  try {
     await axios.patch(
-      `${process.env.REACT_APP_SERVER_URL}/api/posts/${postId}`,
+      `${process.env.REACT_APP_SERVER_URL}/api/posts/${payload.postId}`,
       {
-        id: payload.id,
         title: payload.title,
         content: payload.content,
         classNumber: payload.classNumber,
         specialty: payload.specialty,
+      },
+      {
+        headers: {
+          Authorization: `${jwt}`,
+        },
       }
     );
+  } catch (error) {
+    const errorMag = error.response.data.msg;
+
+    // const errorMag = error.response.data.mag;
+    alert(`${errorMag}`);
+    // return thunkAPI.rejectWithValue(error.response);
   }
-);
+});
 
 // Detail    detail
 
