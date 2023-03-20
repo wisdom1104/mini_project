@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { RecoilRoot, useRecoilState } from "recoil";
 import { cookies } from "../../shared/cookie";
-import { tokenState } from "../modules/login";
+// import { tokenState } from "../modules/login";
 // import Cookies from "universal-cookie";
 import {
   StyledHeader,
@@ -16,14 +16,30 @@ import {
 //isLogin만 boolean으로 global..
 
 const Header = () => {
+  const [isLogin, setIsLogin] = useState(false);
+
+  //cookie의 토큰 값을 불러오기
+  const token = decodeURI(document.cookie).replace("token=", "");
+  // console.log(token);
+  // console.log(isLogin);
+
   const navi = useNavigate();
+
+  const sth = () => {
+    if (token !== undefined) {
+      setIsLogin(true);
+      return console.log(isLogin);
+    } else {
+      setIsLogin(false);
+      return console.log(isLogin);
+    }
+  };
+
   // const [token, setToken] = useRecoilState(tokenState); //recoil로 token state 가져옴
 
   const logout = () => {
-    // setToken(null);
-    // cookies.remove("token", { path: "/login" });
     cookies.remove("token");
-
+    sth();
     navi("/login");
   };
 
@@ -43,10 +59,10 @@ const Header = () => {
                 <HeaderLink to="/board">Board &nbsp;|</HeaderLink>
               </HeaderLi>
               <HeaderLi>
-                <p type="button" style={{ cursor: "pointer" }} onClick={logout}>
+                {/* <p type="button" style={{ cursor: "pointer" }} onClick={logout}>
                   Logout
-                </p>
-                {/* {token ? (
+                </p> */}
+                {token ? (
                   <p type="button" onClick={logout}>
                     Logout
                   </p>
@@ -54,7 +70,7 @@ const Header = () => {
                   <p type="button" onClick={() => navi("/login")}>
                     LogIn
                   </p>
-                )} */}
+                )}
               </HeaderLi>
             </HeaderUl>
           </HeaderNav>
