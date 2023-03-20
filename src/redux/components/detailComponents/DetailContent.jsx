@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import {
   __deleteDetail,
   __editDetail,
@@ -9,6 +9,7 @@ import {
 import Button from "../Buttons";
 
 function DetailContent({ detail, postId }) {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [edit, setEdit] = useState(false);
   // const { id } = useParams();
@@ -26,6 +27,8 @@ function DetailContent({ detail, postId }) {
   const onDeleteDetailHandler = async (postId) => {
     await dispatch(__deleteDetail(postId));
     await dispatch(__getDetail(postId));
+    await navigate(`/board`);
+    await alert("삭제완료!");
     console.log(postId);
   };
 
@@ -55,7 +58,7 @@ function DetailContent({ detail, postId }) {
   // const location = useLocation();
   // const postId = location.pathname.split("detail/")[1];
   // console.log(location);
-  console.log(postId);
+  // console.log(postId);
 
   return (
     <>
