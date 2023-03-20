@@ -30,7 +30,7 @@ export const __deleteDetail = createAsyncThunk(
   "deleteDetail",
   async (postId, thunkAPI) => {
     // console.log(postId);
-    const response = await axios.delete(
+    await axios.delete(
       `${process.env.REACT_APP_SERVER_URL}/api/posts/${postId}`,
       {
         headers: {
@@ -38,8 +38,6 @@ export const __deleteDetail = createAsyncThunk(
         },
       }
     );
-    // console.log(response);
-    return thunkAPI.fulfillWithValue(response.data);
   }
 );
 
