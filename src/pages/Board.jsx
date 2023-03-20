@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import BoardPagination from "../redux/components/BoardPagination";
-import BoardTable from "../redux/components/BoardTable";
+import { useNavigate } from "react-router-dom";
+import BoardPagination from "../redux/components/boardComponents/BoardPagination";
+import BoardTable from "../redux/components/boardComponents/BoardTable";
 import { __getBoard } from "../redux/modules/boradSlice";
 
 function Board() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { isLoading, error, board } = useSelector((state) => state.board);
 
   const [page, setPage] = useState(1); //페이지
@@ -22,7 +24,7 @@ function Board() {
   useEffect(() => {
     dispatch(__getBoard());
     // console.log("board,", board);
-  }, []);
+  }, [dispatch]);
 
   if (isLoading) {
     return <div> 로딩 중... </div>;
@@ -35,7 +37,13 @@ function Board() {
       <div>헤더부분</div>
       <div>
         <h2>게시판</h2>
-        <button>작성하기</button>
+        <button
+          onClick={() => {
+            navigate(`/write`);
+          }}
+        >
+          작성하기
+        </button>
         <div>
           <BoardTable board={postsData(board)} />
           <BoardPagination

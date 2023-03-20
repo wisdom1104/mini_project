@@ -21,12 +21,12 @@ function BoardTable({ board }) {
             {board.map((item) => {
               return (
                 <Tr
-                  key={item.postId}
+                  key={item.id}
                   onClick={() => {
-                    navigate(`/detail/${item.postId}`);
+                    navigate(`/detail/${item.id}`);
                   }}
                 >
-                  <Td>{item.postId}</Td>
+                  <Td>{item.id}</Td>
                   <Td>
                     {item.classNumber}-{item.specialty}
                   </Td>

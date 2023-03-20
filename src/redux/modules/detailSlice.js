@@ -1,13 +1,21 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+const jwt =
+  "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjU1NSIsImF1dGgiOiJBRE1JTiIsImV4cCI6MTY3OTI3NzUzOCwiaWF0IjoxNjc5MjczOTM4fQ.nTdK38-hV_t1IKw03EGQnmu-u2JMqVoVyMKykjUPBj8";
 
 //조회
 export const __getDetail = createAsyncThunk(
   "getDetail",
-  async (payload, thunkAPI) => {
+  async (postId, thunkAPI) => {
+    // console.log(postId);
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_SERVER_URL}/detail`
+        `${process.env.REACT_APP_SERVER_URL}/api/posts/${postId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${jwt}`,
+          },
+        }
       );
       // console.log(response);
       return thunkAPI.fulfillWithValue(response.data);
@@ -17,20 +25,75 @@ export const __getDetail = createAsyncThunk(
   }
 );
 
+//삭제
+// export const __deleteDetail = createAsyncThunk(
+//   "deleteDetail",
+//   async (postId) => {
+//     console.log(postId);
+//     await axios.delete(
+//       `${process.env.REACT_APP_SERVER_URL}/api/posts/${postId}`,
+//       {
+//         headers: {
+//           Authorization: `Bearer ${jwt}`,
+//         },
+//       }
+//     );
+//   }
+// );
+export const __deleteDetail = createAsyncThunk(
+  "deleteDetail",
+  async (postId, thunkAPI) => {
+    // console.log(postId);
+    try {
+      const response = await axios.delete(
+        `${process.env.REACT_APP_SERVER_URL}/api/posts/${postId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${jwt}`,
+          },
+        }
+      );
+      // console.log(response);
+      return thunkAPI.fulfillWithValue(response.data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+//수정
+export const __editDetail = createAsyncThunk(
+  "editDetail",
+  async (payload, postId) => {
+    console.log(payload);
+    console.log(postId);
+    await axios.patch(
+      `${process.env.REACT_APP_SERVER_URL}/api/posts/${postId}`,
+      {
+        id: payload.id,
+        title: payload.title,
+        content: payload.content,
+        classNumber: payload.classNumber,
+        specialty: payload.specialty,
+      }
+    );
+  }
+);
+
+// Detail    detail
+
 const initialState = {
   detail: [],
   isLoading: false,
   error: null,
 };
 
-//  detail     detail
-//  detail     detail
-
 export const detailSlice = createSlice({
   name: "detail",
   initialState,
   reducers: {},
   extraReducers: {
+    // 조회
     [__getDetail.pending]: (state) => {
       state.isLoading = true;
     },
@@ -39,6 +102,30 @@ export const detailSlice = createSlice({
       state.detail = action.payload;
     },
     [__getDetail.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+    // 삭제
+    [__deleteDetail.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [__deleteDetail.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.detail = action.payload;
+    },
+    [__deleteDetail.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+    //수정
+    [__editDetail.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [__editDetail.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.detail = action.payload;
+    },
+    [__editDetail.rejected]: (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
     },
