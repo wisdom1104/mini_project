@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { __getBoard } from "../../modules/boradSlice";
 import {
   __deleteDetail,
   __editDetail,
@@ -26,7 +27,7 @@ function DetailContent({ detail, postId }) {
   //삭제
   const onDeleteDetailHandler = async (postId) => {
     await dispatch(__deleteDetail(postId));
-    await dispatch(__getDetail(postId));
+    await dispatch(__getBoard);
     await navigate(`/board`);
     await alert("삭제완료!");
     console.log(postId);

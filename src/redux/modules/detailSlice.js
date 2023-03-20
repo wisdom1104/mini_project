@@ -7,7 +7,7 @@ const jwt =
 export const __getDetail = createAsyncThunk(
   "getDetail",
   async (postId, thunkAPI) => {
-    // console.log(postId);
+    console.log(postId);
     try {
       const response = await axios.get(
         `${process.env.REACT_APP_SERVER_URL}/api/posts/${postId}`,
@@ -26,38 +26,20 @@ export const __getDetail = createAsyncThunk(
 );
 
 //삭제
-// export const __deleteDetail = createAsyncThunk(
-//   "deleteDetail",
-//   async (postId) => {
-//     console.log(postId);
-//     await axios.delete(
-//       `${process.env.REACT_APP_SERVER_URL}/api/posts/${postId}`,
-//       {
-//         headers: {
-//           Authorization: `Bearer ${jwt}`,
-//         },
-//       }
-//     );
-//   }
-// );
 export const __deleteDetail = createAsyncThunk(
   "deleteDetail",
   async (postId, thunkAPI) => {
     // console.log(postId);
-    try {
-      const response = await axios.delete(
-        `${process.env.REACT_APP_SERVER_URL}/api/posts/${postId}`,
-        {
-          headers: {
-            Authorization: `Bearer ${jwt}`,
-          },
-        }
-      );
-      // console.log(response);
-      return thunkAPI.fulfillWithValue(response.data);
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error);
-    }
+    const response = await axios.delete(
+      `${process.env.REACT_APP_SERVER_URL}/api/posts/${postId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${jwt}`,
+        },
+      }
+    );
+    // console.log(response);
+    return thunkAPI.fulfillWithValue(response.data);
   }
 );
 
@@ -102,18 +84,6 @@ export const detailSlice = createSlice({
       state.detail = action.payload;
     },
     [__getDetail.rejected]: (state, action) => {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
-    // 삭제
-    [__deleteDetail.pending]: (state) => {
-      state.isLoading = true;
-    },
-    [__deleteDetail.fulfilled]: (state, action) => {
-      state.isLoading = false;
-      state.detail = action.payload;
-    },
-    [__deleteDetail.rejected]: (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
     },
