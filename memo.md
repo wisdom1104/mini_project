@@ -160,14 +160,16 @@ dldmsgud1!
 
 14:00-
 
-0. [ ] isLogin Store
+0. [V] isLogin Store 18:00
 
-1. [ ] login/signup front validation
+1. [V] cookies.remove("token") re-rendering 18:40
+
+2. [ ] login/signup front validation
 
 - [ ] signup front RegExp validation
 - [ ] login front RegExp validation
 
-2. [ ] login/signup view
+3. [ ] login/signup view
 
 - [ ] <Header/> display: none
 - [ ] login align

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 // import { cookies } from "../../shared/cookie";
@@ -21,12 +21,14 @@ const Header = () => {
 
   const logout = () => {
     console.log(isLogin);
-    // cookies.remove("token");
     dispatch(isLoginActions.logout());
-    // console.log(isLogin);
     alert("로그아웃 되었습니다.");
+    window.location.reload();
+    //cookies.remove("token")된 상태를 브라우저 콘솔에서 리렌더링
     navi("/login");
   };
+
+  //re-rendering
 
   //========================================================
   // const [isLogin, setIsLogin] = useState(false);
