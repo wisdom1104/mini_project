@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { __signUp } from "../redux/modules/login";
+import EHInput from "../redux/components/EHInput";
 
 const SignUp = () => {
   const dispatch = useDispatch();
@@ -50,7 +51,8 @@ const SignUp = () => {
   const validPassword = (e) => {
     const password = e.target.value;
     const isValidPassword =
-      /^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{5,15}$/.test(
+      // /^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{5,15}$/.test(
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{5,15}$/.test(
         password
       );
     if (isValidPassword) {
@@ -95,7 +97,7 @@ const SignUp = () => {
   const validEmail = (e) => {
     const email = e.target.value;
     const isValidEmail =
-      /^[a-zA-Z0-9+-\\_.]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$/.test(email);
+      /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(email);
     if (isValidEmail) {
       setEmailMsg("올바른 형식입니다.");
     } else {
@@ -154,7 +156,7 @@ const SignUp = () => {
       <div>
         <div>
           <div>아이디</div>
-          <input
+          <EHInput
             type="text"
             value={user.username}
             name="username"
@@ -168,7 +170,7 @@ const SignUp = () => {
         </div>
         <div>
           <div>비밀번호</div>
-          <input
+          <EHInput
             type="password"
             value={user.password}
             name="password"
@@ -182,7 +184,7 @@ const SignUp = () => {
         </div>
         <div>
           <div>비밀번호 확인</div>
-          <input
+          <EHInput
             type="password"
             value={user.passwordCheck}
             name="passwordCheck"
@@ -193,7 +195,7 @@ const SignUp = () => {
         </div>
         <div>
           <div>닉네임</div>
-          <input
+          <EHInput
             type="text"
             value={user.nickname}
             name="nickname"
@@ -207,7 +209,7 @@ const SignUp = () => {
         </div>
         <div>
           <div>이메일</div>
-          <input
+          <EHInput
             type="text"
             value={user.email}
             name="email"
@@ -220,7 +222,8 @@ const SignUp = () => {
           <p style={{ fontSize: "10px" }}>{emailMsg}</p>
         </div>
       </div>
-      <button>완료</button>
+      <button>가입하기</button>
+      <Link to="/login">이미 계정이 있으신가요?</Link>
     </Container>
   );
 };

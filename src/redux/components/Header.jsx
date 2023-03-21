@@ -1,9 +1,9 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-// import { cookies } from "../../shared/cookie";
-// import authSlice from "../modules/login";
 import { isLoginActions } from "../modules/login";
+import { cookies } from "../../shared/cookie";
+
 import {
   StyledHeader,
   HeaderNav,
@@ -13,6 +13,7 @@ import {
 } from "./styles";
 
 const Header = () => {
+  // console.log(cookies.get);
   const navi = useNavigate();
   const dispatch = useDispatch();
 
@@ -50,6 +51,9 @@ const Header = () => {
 
   return (
     <StyledHeader>
+      <div style={{ fontSize: "15px", float: "right" }}>
+        {cookies.get("nickname")}&nbsp;님 안녕하세요?
+      </div>
       <div>
         <HeaderNav>
           <HeaderUl>

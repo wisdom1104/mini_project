@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { isLoginActions, __login } from "../redux/modules/login";
-// import { useSetRecoilState } from "recoil"; //recoil
+import styled from "styled-components";
+import EHInput from "../redux/components/EHInput";
 
 const LogIn = () => {
   const dispatch = useDispatch();
-  // const setToken = useSetRecoilState(tokenState); //recoil
-  const [isLogin, setIsLogin] = useState(false);
 
   const navi = useNavigate();
   const [user, setUser] = useState({
@@ -49,12 +48,12 @@ const LogIn = () => {
   // ============== non-thunk ver ====================
 
   return (
-    <form onSubmit={submitButtonHandler}>
+    <Container onSubmit={submitButtonHandler}>
       <h1>로그인</h1>
       <div>
         <div>
           <div>아이디</div>
-          <input
+          <EHInput
             type="text"
             value={user.username}
             name="username"
@@ -65,7 +64,7 @@ const LogIn = () => {
 
         <div>
           <div>패스워드</div>
-          <input
+          <EHInput
             type="password"
             value={user.password}
             name="password"
@@ -76,8 +75,18 @@ const LogIn = () => {
       </div>
       <button>로그인</button>
       <button onClick={() => navi("/signup")}>회원가입 하러 가기</button>
-    </form>
+    </Container>
   );
 };
+
+const Container = styled.form`
+  gap: 20px;
+  height: 95vh;
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+`;
 
 export default LogIn;

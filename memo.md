@@ -143,6 +143,9 @@ dldmsgud1!
 //이윤 매니저님
 기능이 좀 적더라도 완성도가 높은 게 좋은 것 같다.
 배포를 앞당겨서 .. ..... 같이 디버깅.....
+=======
+
+# dev입니다
 
 ======================================================
 ========================03/21=========================
@@ -164,15 +167,31 @@ dldmsgud1!
 
 1. [V] cookies.remove("token") re-rendering 18:40
 
-2. [ ] login/signup front validation
+2. [V] login/signup front validation 23:00
 
-- [ ] signup front RegExp validation
-- [ ] login front RegExp validation
+- [V] signup front RegExp validation
+- [V] login front RegExp validation
 
-3. [ ] login/signup view
+3. [V] path set with token? 23:30
 
-- [ ] <Header/> display: none
-- [ ] login align
-- [ ] signup align
+- [V] !토큰 => to="/signup"
+- [V] 회원가입 화면 밑에 Link to="/login" "이미 계정이 있으신가요?"
+
+4. [V] header greeting 00:55
+
+- [V] API 명세 추가
+  - login.js => cookies.set("nickname", response.data.nickname, { path: "/" });
+- [V] Header.jsx => {cookies.get("nickname")}님 안녕하세요?
+
+5. [ ] header display
+
+- [ ] if(!token) {<Header/> display: none}
+
+6. [ ] CSS
+
+- [ ] login
+- [ ] signup
+- [ ] Header
+- [ ] About
 
 # JH

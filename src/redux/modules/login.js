@@ -2,6 +2,15 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { apis } from "../../shared/axios";
 import { cookies } from "../../shared/cookie";
 
+// const initialState = [{}];
+
+//===recoil token state atom 추가===
+// export const tokenState = atom({
+//     key: "tokenState",
+//     default: null,
+// })
+//================================
+
 export const __signUp = createAsyncThunk("signUp", async (newUser, thunk) => {
   try {
     await apis.post("/api/signup", newUser);
@@ -19,7 +28,7 @@ export const __login = createAsyncThunk("logIn", async (thisUser, thunk) => {
   try {
     const response = await apis.post("api/login", thisUser);
     cookies.set("token", response.headers.authorization, { path: "/" });
-
+    cookies.set("nickname", response.data.nickname, { path: "/" });
     return thunk.fulfillWithValue(thisUser);
   } catch (e) {
     console.log(e);
@@ -44,28 +53,10 @@ export const authSlice = createSlice({
     logout(state) {
       state.isLogin = false;
       cookies.remove("token");
+      cookies.remove("nickname");
     },
   },
 });
 
 export const isLoginActions = authSlice.actions;
 export default authSlice.reducer;
-
-// export const authSlice = createSlice({
-//   name: "auth",
-//   initialState,
-//   reducers: {
-//     setLoginState: (state, action) => {
-//       state.isLogin = action.payload;
-//     },
-//   },
-//   extraReducers: (builder) => {
-//     builder.addCase(__login.fulfilled, (state, action) => {
-//       const token = cookies.get("token");
-//       if (token !== undefined) {
-//         state.isLogin = true;
-//       }
-//     })
-//   }
-// });
-
