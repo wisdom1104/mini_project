@@ -19,6 +19,7 @@ export const __login = createAsyncThunk("logIn", async (thisUser, thunk) => {
   try {
     const response = await apis.post("api/login", thisUser);
     cookies.set("token", response.headers.authorization, { path: "/" });
+
     return thunk.fulfillWithValue(thisUser);
   } catch (e) {
     console.log(e);
@@ -33,10 +34,38 @@ const initialState = {
   isLogin: false,
 };
 
-export const isLoginSlice = createSlice({
-  name: "isLogin",
+export const authSlice = createSlice({
+  name: "auth",
   initialState,
-  reducers: {}
+  reducers: {
+    login(state) {
+      state.isLogin = true;
+    },
+    logout(state) {
+      state.isLogin = false;
+      cookies.remove("token");
+    },
+  },
 });
 
-export default isLoginSlice.reducer;
+export const isLoginActions = authSlice.actions;
+export default authSlice.reducer;
+
+// export const authSlice = createSlice({
+//   name: "auth",
+//   initialState,
+//   reducers: {
+//     setLoginState: (state, action) => {
+//       state.isLogin = action.payload;
+//     },
+//   },
+//   extraReducers: (builder) => {
+//     builder.addCase(__login.fulfilled, (state, action) => {
+//       const token = cookies.get("token");
+//       if (token !== undefined) {
+//         state.isLogin = true;
+//       }
+//     })
+//   }
+// });
+

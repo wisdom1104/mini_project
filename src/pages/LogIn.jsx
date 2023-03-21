@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { __login } from "../redux/modules/login";
+import { isLoginActions, __login } from "../redux/modules/login";
 // import { useSetRecoilState } from "recoil"; //recoil
 
 const LogIn = () => {
@@ -29,8 +29,8 @@ const LogIn = () => {
     // setToken(response.headers.authorization); // recoil -> atom 업데이트
     if (response.type === "logIn/fulfilled") {
       //수정 중==========================================
-      setIsLogin(true); //이 state를 전역으로. 이게 안 들어가네?..
-      console.log(isLogin);
+      dispatch(isLoginActions.login());
+      alert("로그인 되었습니다.");
       navi("/");
       //수정 중==========================================
     }
