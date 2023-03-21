@@ -7,6 +7,7 @@ import { __login } from "../redux/modules/login";
 const LogIn = () => {
   const dispatch = useDispatch();
   // const setToken = useSetRecoilState(tokenState); //recoil
+  const [isLogin, setIsLogin] = useState(false);
 
   const navi = useNavigate();
   const [user, setUser] = useState({
@@ -27,8 +28,11 @@ const LogIn = () => {
     const response = await dispatch(__login(user));
     // setToken(response.headers.authorization); // recoil -> atom 업데이트
     if (response.type === "logIn/fulfilled") {
-      //isLogin 전역으로 다뤄서 true로 바꿔야
+      //수정 중==========================================
+      setIsLogin(true); //이 state를 전역으로. 이게 안 들어가네?..
+      console.log(isLogin);
       navi("/");
+      //수정 중==========================================
     }
   };
   // =================== thunk ver ====================
