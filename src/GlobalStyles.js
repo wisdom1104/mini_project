@@ -6,6 +6,6 @@ const GlobalStyles = createGlobalStyle`
     :root{
 
     }
-`
-
+`;
+//$$$$$
 export default GlobalStyles;
