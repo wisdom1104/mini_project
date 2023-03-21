@@ -26,13 +26,10 @@ const LogIn = () => {
   const submitButtonHandler = async (e) => {
     e.preventDefault();
     const response = await dispatch(__login(user));
-    // setToken(response.headers.authorization); // recoil -> atom 업데이트
     if (response.type === "logIn/fulfilled") {
-      //수정 중==========================================
       dispatch(isLoginActions.login());
       alert("로그인 되었습니다.");
       navi("/");
-      //수정 중==========================================
     }
   };
   // =================== thunk ver ====================

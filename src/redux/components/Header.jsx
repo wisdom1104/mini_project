@@ -17,10 +17,8 @@ const Header = () => {
   const dispatch = useDispatch();
 
   const isLogin = useSelector((state) => state.auth.isLogin);
-  console.log(isLogin);
 
   const logout = () => {
-    console.log(isLogin);
     dispatch(isLoginActions.logout());
     alert("로그아웃 되었습니다.");
     window.location.reload();
