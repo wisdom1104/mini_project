@@ -1,9 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import gatherSlice from "../modules/gather";
-import loginSlice from "../modules/login";
-
+import gather from "../modules/gather";
+import login
+    from "../modules/login";
 const store = configureStore({
-    reducer: { loginSlice, gatherSlice },
+    reducer: {
+        gather,
+        login,
+    },
     devTools: process.env.NODE_ENV === "developmetns" ? false : true,
 });
 

@@ -1,6 +1,6 @@
 import React from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import ApiTest from "../pages/ApiTest";
+// import { RecoilRoot } from "recoil";
 import About from "../pages/About";
 import Board from "../pages/Board";
 import Detail from "../pages/Detail";
@@ -14,6 +14,7 @@ import Header from "../redux/components/Header";
 const Router = () => {
     return (
         <BrowserRouter>
+            {/* <RecoilRoot> */}
             <Header />
             <Routes>
                 <Route path="/" element={<Home />} />
@@ -23,8 +24,8 @@ const Router = () => {
                 <Route path="/write/:id" element={<Write />} />
                 <Route path="/login" element={<LogIn />} />
                 <Route path="/signup" element={<SignUp />} />
-                <Route path="/test" element={<ApiTest />} />
             </Routes>
+            {/* </RecoilRoot> */}
         </BrowserRouter>
     )
 }
