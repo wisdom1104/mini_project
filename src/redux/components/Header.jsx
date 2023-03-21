@@ -22,24 +22,24 @@ const Header = () => {
   const token = decodeURI(document.cookie).replace("token=", "");
   // console.log(token);
   // console.log(isLogin);
+  // console.log(document);
 
   const navi = useNavigate();
 
-  const sth = () => {
+  const isLoginHandler = () => {
     if (token !== undefined) {
       setIsLogin(true);
-      return console.log(isLogin);
+      return;
     } else {
       setIsLogin(false);
-      return console.log(isLogin);
+      return;
     }
   };
 
-  // const [token, setToken] = useRecoilState(tokenState); //recoil로 token state 가져옴
-
   const logout = () => {
     cookies.remove("token");
-    sth();
+    isLoginHandler();
+    alert("로그아웃 되었습니다.");
     navi("/login");
   };
 
@@ -63,11 +63,19 @@ const Header = () => {
                   Logout
                 </p> */}
                 {token ? (
-                  <p type="button" onClick={logout}>
+                  <p
+                    type="button"
+                    style={{ cursor: "pointer" }}
+                    onClick={logout}
+                  >
                     Logout
                   </p>
                 ) : (
-                  <p type="button" onClick={() => navi("/login")}>
+                  <p
+                    type="button"
+                    style={{ cursor: "pointer" }}
+                    onClick={() => navi("/login")}
+                  >
                     LogIn
                   </p>
                 )}

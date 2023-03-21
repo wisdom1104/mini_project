@@ -7,7 +7,8 @@ import { __signUp } from "../redux/modules/login";
 const SignUp = () => {
   const dispatch = useDispatch();
   const navi = useNavigate();
-  const [confirmPwMsg, setConfirmPwMsg] = useState(""); //비밀번호 일치 여부 메시지
+  // const [usernameMsg, setUsernameMsg] = useState("");
+
   const [user, setUser] = useState({
     username: "",
     password: "",
@@ -24,12 +25,41 @@ const SignUp = () => {
     });
   };
 
-  // 비밀번호 일치 검사
+  //=====================================================
+  //=================== 유효성 검사 1 ======================
+  //=====================================================
+
+  //RegExp 추가
+
+  //================== 닉네임 유효성 검사 ===================
+
+  //================== 이메일 유효성 검사 ===================
+
+  // ================ 아이디 유효성 검사 ====================
+  // RegExp
+
+  const [usernameMsg, setUsernameMsg] = useState("");
+  const validUsername = (e) => {
+    // e.preventDefault();
+    const validUsername = e.target.value;
+    if (validUsername.length < 5) {
+      setUsernameMsg(
+        "아이디는 5~12글자, 알파벳 소문자 또는 숫자를 최소 한 자 이상 포함해야 합니다."
+      );
+    } else {
+      setUsernameMsg("올바른 형식입니다.");
+    }
+  };
+
+  // ================ 비밀번호 유효성 검사 ===================
+
+  // ================= 비밀번호 일치 검사 ====================
+  // user.password가 checkPw에 맞춰서 따라가면 왜 if문이 반응을 안 하지?..
+  // -> useCallback ( , [user.password])도 안 됨
+  const [confirmPwMsg, setConfirmPwMsg] = useState("");
   const onChangeConfirmPw = (e) => {
     e.preventDefault();
     const checkPw = e.target.value;
-    console.log(user.password);
-    console.log(checkPw);
 
     if (user.password.length >= 1 && user.password !== checkPw) {
       setConfirmPwMsg("비밀번호와 비밀번호 확인의 값이 일치하지 않습니다.");
@@ -38,11 +68,37 @@ const SignUp = () => {
       setConfirmPwMsg("비밀번호가 일치합니다.");
     }
   };
-  //user.password가 checkPw에 맞춰서 따라가면 왜 if문이 반응을 안 하지?..
 
-  // ================= thunk ver. ========================
+  //=====================================================
+  //=================== 유효성 검사 2 ======================
+  //=====================================================
+
+  // ================= thunk ver. =======================
   const submitButtonHandler = async (e) => {
     e.preventDefault();
+
+    // =============== 인풋 공백 검사 ======================
+    if (
+      user.username === "" ||
+      user.password === "" ||
+      user.passwordCheck === "" ||
+      user.nickname === "" ||
+      user.email === ""
+    ) {
+      alert("빈 칸을 작성해 주세요.");
+      return;
+    }
+
+    // if (user.username.length <= 5) {
+    //   setUsernameMsg("아이디는 다섯 글자 이상이어야 합니다");
+    //   console.log(usernameMsg);
+    // } else {
+    //   setUsernameMsg("");
+    // }
+
+    // ===================================================
+    // =============== 서버 2차 유효성 검사 ==================
+
     const result = await dispatch(__signUp(user));
     if (result.type === "signUp/fulfilled") {
       navi("/login");
@@ -75,9 +131,13 @@ const SignUp = () => {
             type="text"
             value={user.username}
             name="username"
-            onChange={changeInputHandler}
+            onChange={(e) => {
+              validUsername(e);
+              changeInputHandler(e);
+            }}
             placeholder="아이디를 입력해 주세요."
           />
+          <p style={{ fontSize: "10px" }}>{usernameMsg}</p>
         </div>
         <div>
           <div>비밀번호</div>
@@ -98,7 +158,7 @@ const SignUp = () => {
             onChange={onChangeConfirmPw}
             placeholder="비밀번호를 다시 입력해 주세요."
           />
-          <div>{confirmPwMsg}</div>
+          <p style={{ fontSize: "10px" }}>{confirmPwMsg}</p>
         </div>
         <div>
           <div>닉네임</div>
@@ -129,6 +189,7 @@ const SignUp = () => {
 const Container = styled.form`
   gap: 20px;
   height: 95vh;
+  min-width: 200px;
   display: flex;
   align-items: center;
   flex-direction: column;
