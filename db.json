@@ -238,5 +238,250 @@
       "content": "grfge",
       "id": 3
     }
+    ],
+  "signup": [
+    {
+      "id": "",
+      "username": "hanghae99",
+      "password": "pass!@#word",
+      "passwordCheck": "pass!@#word",
+      "nickname": "2조가즈아",
+      "email": "hang99@hae.com",
+      "admin": true,
+      "admintoken": "team@admin"
+    },
+    {
+      "id": "",
+      "username": "박지혜",
+      "password": "1234",
+      "passwordCheck": "1234",
+      "nickname": "지혜짱짱",
+      "email": "jihye@gmail.com",
+      "admin": false,
+      "admintoken": ""
+    },
+    {
+      "id": "",
+      "username": "이은형",
+      "password": "1234",
+      "passwordCheck": "1234",
+      "nickname": "리액트야 미안해",
+      "email": "ehlee@gamil.com",
+      "admin": false,
+      "admintoken": ""
+    },
+    {
+      "id": "",
+      "username": "김건율",
+      "password": "1234",
+      "passwordCheck": "1234",
+      "nickname": "건율슈퍼맨",
+      "email": "kky@gmail.com",
+      "admin": false,
+      "admintoken": ""
+    },
+    {
+      "id": "",
+      "username": "이승빈",
+      "password": "1234",
+      "passwordCheck": "1234",
+      "nickname": "모든 것의 신 이승빈",
+      "email": "lsb@gmail.com",
+      "admin": false,
+      "admintoken": ""
+    },
+    {
+      "id": "",
+      "username": "장동희",
+      "password": "1234",
+      "passwordCheck": "1234",
+      "nickname": "무적장동희",
+      "email": "jdh@gmail.com",
+      "admin": false,
+      "admintoken": ""
+    },
+    {
+      "id": "YEkArvY",
+      "username": "이승빈23",
+      "password": "123",
+      "passwordCheck": "123",
+      "nickname": "무적장동희2",
+      "email": "sdfdsf@naver.com",
+      "admin": false,
+      "admintoken": ""
+    },
+    {
+      "id": "HPJ5WFI",
+      "username": "이은형23",
+      "password": "1234",
+      "passwordCheck": "1234",
+      "nickname": "닉네임",
+      "email": "12345",
+      "admin": false,
+      "admintoken": ""
+    },
+    {
+      "id": "9Ihm3ZO",
+      "username": "test1",
+      "password": "1234",
+      "passwordCheck": "1234",
+      "nickname": "test1",
+      "email": "1234",
+      "admin": false,
+      "admintoken": ""
+    },
+    {
+      "id": "MeTCJiC",
+      "username": "test2",
+      "password": "1234",
+      "passwordCheck": "1234",
+      "nickname": "test2",
+      "email": "123456",
+      "admin": false,
+      "admintoken": ""
+    },
+    {
+      "user": {
+        "id": "",
+        "username": "청크테스트",
+        "password": "1234",
+        "passwordCheck": "1234",
+        "nickname": "1234",
+        "email": "123466",
+        "admin": false,
+        "admintoken": ""
+      },
+      "id": "6o39ALB"
+    },
+    {
+      "user": {
+        "id": "",
+        "username": "test4",
+        "password": "1234",
+        "passwordCheck": "1234",
+        "nickname": "4363463",
+        "email": "23432",
+        "admin": false,
+        "admintoken": ""
+      },
+      "id": "5ARqMdk"
+    },
+    {
+      "id": "pD4_Ahs"
+    },
+    {
+      "user": {
+        "username": "test10",
+        "password": "1234",
+        "passwordCheck": "1234",
+        "nickname": "test",
+        "email": "123455562",
+        "admin": false,
+        "admintoken": ""
+      },
+      "id": "xEfe-i1"
+    },
+    {
+      "username": "trycatchtest",
+      "password": "1234",
+      "passwordCheck": "1234",
+      "nickname": "1234",
+      "email": "12344",
+      "admin": false,
+      "admintoken": "",
+      "id": "lJNLygG"
+    },
+    {
+      "username": "test6",
+      "password": "1234",
+      "passwordCheck": "1234",
+      "nickname": "rkskekfk",
+      "email": "rksfksdf",
+      "admin": false,
+      "admintoken": "",
+      "id": "s5oMh3k"
+    },
+    {
+      "id": "_l_8S4l",
+      "username": "test11",
+      "password": "1234",
+      "passwordCheck": "1234",
+      "nickname": "sdjsd;fk",
+      "email": "sdfsdfds",
+      "admin": false,
+      "admintoken": ""
+    },
+    {
+      "id": "VlhR57v",
+      "username": "123123",
+      "password": "1234",
+      "passwordCheck": "1234",
+      "nickname": "tttt",
+      "email": "123453434",
+      "admin": false,
+      "admintoken": ""
+    }
+  ],
+  "login": [
+    {
+      "id": "",
+      "username": "hanghae99",
+      "password": "pass!@#word"
+    },
+    {
+      "id": "hSCByQf",
+      "username": "1234",
+      "password": "1234"
+    },
+    {
+      "id": "wuE3G1I",
+      "username": "1234",
+      "password": "1234"
+    },
+    {
+      "id": "6nOGTvA",
+      "username": "44",
+      "password": "44"
+    },
+    {
+      "id": "uS3Xm1q",
+      "username": "22",
+      "password": "2222"
+    },
+    {
+      "id": "_SARRz9",
+      "username": "1234",
+      "password": "2222"
+    },
+    {
+      "id": "y2l6a9B",
+      "username": "",
+      "password": ""
+    },
+    {
+      "id": "bp66k2t",
+      "username": "1234",
+      "password": "1234"
+    },
+    {
+      "id": "M67082g",
+      "username": "1234",
+      "password": "1234"
+    },
+    {
+      "id": "yshJr6D",
+      "username": "12",
+      "password": "12"
+    },
+    {
+      "id": "uFAfFYG",
+      "username": "",
+      "password": ""
+    },
+    {
+      "id": "zct7y7f",
+      "username": "1234",
+      "password": "1234"
+    }
   ]
 }
