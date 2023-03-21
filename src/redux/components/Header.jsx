@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { RecoilRoot, useRecoilState } from "recoil";
+// import { RecoilRoot, useRecoilState } from "recoil";
 import { cookies } from "../../shared/cookie";
 // import { tokenState } from "../modules/login";
 // import Cookies from "universal-cookie";
@@ -44,47 +44,43 @@ const Header = () => {
   };
 
   return (
-    <RecoilRoot>
-      <StyledHeader>
-        <div>
-          <HeaderNav>
-            <HeaderUl>
-              <HeaderLi>
-                <HeaderLink to="/">Home &nbsp;|</HeaderLink>
-              </HeaderLi>
-              <HeaderLi>
-                <HeaderLink to="/about">About &nbsp;|</HeaderLink>
-              </HeaderLi>
-              <HeaderLi>
-                <HeaderLink to="/board">Board &nbsp;|</HeaderLink>
-              </HeaderLi>
-              <HeaderLi>
-                {/* <p type="button" style={{ cursor: "pointer" }} onClick={logout}>
+    // <RecoilRoot>
+    <StyledHeader>
+      <div>
+        <HeaderNav>
+          <HeaderUl>
+            <HeaderLi>
+              <HeaderLink to="/">Home &nbsp;|</HeaderLink>
+            </HeaderLi>
+            <HeaderLi>
+              <HeaderLink to="/about">About &nbsp;|</HeaderLink>
+            </HeaderLi>
+            <HeaderLi>
+              <HeaderLink to="/board">Board &nbsp;|</HeaderLink>
+            </HeaderLi>
+            <HeaderLi>
+              {/* <p type="button" style={{ cursor: "pointer" }} onClick={logout}>
                   Logout
                 </p> */}
-                {token ? (
-                  <p
-                    type="button"
-                    style={{ cursor: "pointer" }}
-                    onClick={logout}
-                  >
-                    Logout
-                  </p>
-                ) : (
-                  <p
-                    type="button"
-                    style={{ cursor: "pointer" }}
-                    onClick={() => navi("/login")}
-                  >
-                    LogIn
-                  </p>
-                )}
-              </HeaderLi>
-            </HeaderUl>
-          </HeaderNav>
-        </div>
-      </StyledHeader>
-    </RecoilRoot>
+              {token ? (
+                <p type="button" style={{ cursor: "pointer" }} onClick={logout}>
+                  Logout
+                </p>
+              ) : (
+                <p
+                  type="button"
+                  style={{ cursor: "pointer" }}
+                  onClick={() => navi("/login")}
+                >
+                  LogIn
+                </p>
+              )}
+            </HeaderLi>
+          </HeaderUl>
+        </HeaderNav>
+      </div>
+    </StyledHeader>
+    // </RecoilRoot>
   );
 };
 
