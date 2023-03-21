@@ -31,27 +31,38 @@ const SignUp = () => {
 
   //RegExp 추가
 
-  //================== 닉네임 유효성 검사 ===================
-
-  //================== 이메일 유효성 검사 ===================
-
   // ================ 아이디 유효성 검사 ====================
-  // RegExp
 
   const [usernameMsg, setUsernameMsg] = useState("");
   const validUsername = (e) => {
-    // e.preventDefault();
-    const validUsername = e.target.value;
-    if (validUsername.length < 5) {
-      setUsernameMsg(
-        "아이디는 5~12글자, 알파벳 소문자 또는 숫자를 최소 한 자 이상 포함해야 합니다."
-      );
-    } else {
+    const username = e.target.value;
+    const isValidUsername = /^(?=.*[0-9])(?=.*[a-z]).{5,12}$/.test(username);
+    if (isValidUsername) {
       setUsernameMsg("올바른 형식입니다.");
+    } else {
+      setUsernameMsg(
+        "아이디는 5~12글자, 알파벳 소문자와 숫자를 최소 한 자 이상 포함해야 합니다."
+      );
     }
   };
 
   // ================ 비밀번호 유효성 검사 ===================
+  //레겍스 체크
+  const [passwordMsg, setPasswordMsg] = useState("");
+  const validPassword = (e) => {
+    const password = e.target.value;
+    const isValidPassword =
+      /^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{5,15}$/.test(
+        password
+      );
+    if (isValidPassword) {
+      setPasswordMsg("올바른 형식입니다.");
+    } else {
+      setPasswordMsg(
+        "비밀번호는 5~15글자, 알파벳, 숫자, 특수문자를 최소 하나씩 입력해야 합니다."
+      );
+    }
+  };
 
   // ================= 비밀번호 일치 검사 ====================
   // user.password가 checkPw에 맞춰서 따라가면 왜 if문이 반응을 안 하지?..
@@ -66,6 +77,33 @@ const SignUp = () => {
     }
     if (user.password.length >= 1 && user.password === checkPw) {
       setConfirmPwMsg("비밀번호가 일치합니다.");
+    }
+  };
+
+  //================== 닉네임 유효성 검사 ===================
+  const [nicknameMsg, setNicknameMsg] = useState("");
+  const validNickname = (e) => {
+    const nickname = e.target.value;
+    const isValidNickname = /^[가-힣a-zA-Z0-9]{2,15}$/.test(nickname);
+    if (isValidNickname) {
+      setNicknameMsg("올바른 형식입니다.");
+    } else {
+      setNicknameMsg(
+        "닉네임은 2~15글자, 한글, 알파벳, 숫자를 입력하셔야합니다"
+      );
+    }
+  };
+  //================== 이메일 유효성 검사 ===================
+  //레겍스 체크
+  const [emailMsg, setEmailMsg] = useState("");
+  const validEmail = (e) => {
+    const email = e.target.value;
+    const isValidEmail =
+      /^[a-zA-Z0-9+-\\_.]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$/.test(email);
+    if (isValidEmail) {
+      setEmailMsg("올바른 형식입니다.");
+    } else {
+      setEmailMsg("이메일 형식에 맞지 않습니다.");
     }
   };
 
@@ -145,9 +183,13 @@ const SignUp = () => {
             type="password"
             value={user.password}
             name="password"
-            onChange={changeInputHandler}
+            onChange={(e) => {
+              validPassword(e);
+              changeInputHandler(e);
+            }}
             placeholder="비밀번호를 입력해 주세요."
           />
+          <p style={{ fontSize: "10px" }}>{passwordMsg}</p>
         </div>
         <div>
           <div>비밀번호 확인</div>
@@ -166,9 +208,13 @@ const SignUp = () => {
             type="text"
             value={user.nickname}
             name="nickname"
-            onChange={changeInputHandler}
+            onChange={(e) => {
+              changeInputHandler(e);
+              validNickname(e);
+            }}
             placeholder="닉네임을 입력해 주세요."
           />
+          <p style={{ fontSize: "10px" }}>{nicknameMsg}</p>
         </div>
         <div>
           <div>이메일</div>
@@ -176,9 +222,13 @@ const SignUp = () => {
             type="text"
             value={user.email}
             name="email"
-            onChange={changeInputHandler}
+            onChange={(e) => {
+              changeInputHandler(e);
+              validEmail(e);
+            }}
             placeholder="이메일을 입력해 주세요."
           />
+          <p style={{ fontSize: "10px" }}>{emailMsg}</p>
         </div>
       </div>
       <button>완료</button>

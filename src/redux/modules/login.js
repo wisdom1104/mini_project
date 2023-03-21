@@ -2,15 +2,6 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { apis } from "../../shared/axios";
 import { cookies } from "../../shared/cookie";
 
-const initialState = [{}];
-
-//===recoil token state atom 추가===
-// export const tokenState = atom({
-//     key: "tokenState",
-//     default: null,
-// })
-//================================
-
 export const __signUp = createAsyncThunk("signUp", async (newUser, thunk) => {
   try {
     await apis.post("/api/signup", newUser);
@@ -38,10 +29,14 @@ export const __login = createAsyncThunk("logIn", async (thisUser, thunk) => {
   }
 });
 
-const loginSlice = createSlice({
-  name: "login",
+const initialState = {
+  isLogin: false,
+};
+
+export const isLoginSlice = createSlice({
+  name: "isLogin",
   initialState,
-  reducers: {},
+  reducers: {}
 });
 
-export default loginSlice.reducer;
+export default isLoginSlice.reducer;
