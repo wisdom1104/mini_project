@@ -6,12 +6,19 @@ import { __getDetail } from "../../modules/detailSlice";
 
 import Button from "../Buttons";
 
-function DetailCommentForm({ detail, postId }) {
+function DetailCommentForm({ postId }) {
   // const navigate = useNavigate();
   const dispatch = useDispatch();
   const [content, setContent] = useState("");
 
+  // @Size(min = 1, max = 100,
+  //message = "댓글은 최소 1자에서 최대 100자 이내여야 합니다.")
+
   const submitHandler = async () => {
+    if (content.length < 1 || content.length > 100) {
+      alert("댓글은 최소 1자 이상, 최대 100자 이내여야 합니다!");
+      return;
+    }
     const payload = {
       postId,
       content,
@@ -19,8 +26,7 @@ function DetailCommentForm({ detail, postId }) {
     dispatch(__addComment(payload));
     // console.log(content);
     setContent("");
-    alert("댓글 작성 완료!");
-    await dispatch(__getDetail(postId));
+    // alert("댓글 작성 완료!");
   };
   return (
     <>

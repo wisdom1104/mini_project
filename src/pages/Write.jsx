@@ -1,9 +1,7 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Button from "../redux/components/Buttons";
-import { __getBoard } from "../redux/modules/boradSlice";
-// import { __getBoard } from "../redux/modules/boradSlice";
 import { __addWrite } from "../redux/modules/writeSlice";
 
 function Write() {
@@ -13,15 +11,31 @@ function Write() {
   const [specialty, setSpecialty] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const { error, isSuccess } = useSelector((state) => state.write);
+
+  //추가
+  useEffect(() => {
+    if (isSuccess) {
+      setClassNumber("");
+      setSpecialty("");
+      setTitle("");
+      setContent("");
+      navigate(`/board`);
+      alert("업로드 성공!");
+    }
+  }, [error, isSuccess]);
 
   const submitHandler = async () => {
+    if (title.length < 3 || title.length > 25) {
+      alert("제목은 3자 이상, 25자 이하여야 합니다!");
+      return;
+    }
+
+    if (content.length < 10 || content.length > 2000) {
+      alert("내용은 10자 이상, 2000자 이하여야 합니다!");
+      return;
+    }
     dispatch(__addWrite({ classNumber, specialty, title, content }));
-    await dispatch(__getBoard());
-    await setClassNumber("");
-    await setSpecialty("");
-    await setTitle("");
-    await setContent("");
-    await navigate(`/board`);
   };
 
   return (

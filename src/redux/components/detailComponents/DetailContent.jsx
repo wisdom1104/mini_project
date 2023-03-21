@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { __getBoard } from "../../modules/boradSlice";
 import {
   __deleteDetail,
   __editDetail,
@@ -13,15 +12,19 @@ function DetailContent({ detail, postId }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [edit, setEdit] = useState(false);
+  const { error, isDelete, isEdit } = useSelector((state) => state.detail);
 
   //삭제
-  const onDeleteDetailHandler = async (postId) => {
-    dispatch(__deleteDetail(postId));
+  useEffect(() => {
+    if (isDelete) {
+      alert("삭제완료!");
+      navigate(`/board`);
+    }
+    // console.log(isDelete);
+  }, [error, isDelete]);
 
-    await dispatch(__getBoard);
-    await navigate(`/board`);
-    await alert("삭제완료!");
-    // console.log(postId);
+  const onDeleteDetailHandler = async () => {
+    dispatch(__deleteDetail(postId));
   };
 
   //수정
@@ -33,6 +36,14 @@ function DetailContent({ detail, postId }) {
   const [editSpecialty, setEditSpecialty] = useState(detail?.specialty || "");
 
   //수정
+  useEffect(() => {
+    if (isEdit) {
+      setEdit(!edit);
+      alert("게시글 수정 완료!");
+    }
+    console.log(isEdit);
+  }, [error, isEdit]);
+
   const onEditDetailHandler = async () => {
     const payload = {
       postId,
@@ -43,12 +54,8 @@ function DetailContent({ detail, postId }) {
     };
     // console.log(postId);
     dispatch(__editDetail(payload));
-    await dispatch(__getDetail(postId));
-    await setEdit(!edit);
-    // console.log(editTitle);
-    // console.log(editSpecialty);
+    // setEdit(!edit);
   };
-  // console.log(detail);
 
   if (!detail) {
     return <div>로딩 중...</div>;
@@ -69,9 +76,10 @@ function DetailContent({ detail, postId }) {
           <Button
             borderColor={"#5385e7"}
             text={"수정하기"}
-            onClick={() => {
-              setEdit(!edit);
-            }}
+            // onClick={() => {
+            //   setEdit(!edit);
+            // }}
+            onClick={onEditDetailHandler}
           />
           <Button
             text={"삭제하기"}

@@ -16,7 +16,7 @@ function Detail() {
 
   useEffect(() => {
     dispatch(__getDetail(id));
-  }, []);
+  }, [dispatch]);
 
   if (isLoading) {
     return <div> 로딩 중... </div>;

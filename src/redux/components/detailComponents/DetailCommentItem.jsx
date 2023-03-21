@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { __deleteComment, __editComment } from "../../modules/commentSlice";
 import { __getDetail } from "../../modules/detailSlice";
 import Button from "../Buttons";
@@ -7,6 +7,7 @@ import Button from "../Buttons";
 function DetailCommentItem({ comment, postId }) {
   const [editContent, setEditContent] = useState(comment?.content || "");
   const [edit, setEdit] = useState(false);
+  // const { error, isCommentEdit } = useSelector((state) => state.detail);
 
   const dispatch = useDispatch();
   //삭제
@@ -16,7 +17,6 @@ function DetailCommentItem({ comment, postId }) {
       commentId: comment.id,
     };
     await dispatch(__deleteComment(payload));
-    alert("댓글 삭제 완료!");
     await dispatch(__getDetail(postId));
   };
   //수정
@@ -26,12 +26,8 @@ function DetailCommentItem({ comment, postId }) {
       commentId: comment.id,
       content: editContent,
     };
-    // console.log(postId);
     await dispatch(__editComment(payload));
-    await dispatch(__getDetail(postId));
     setEdit(!edit);
-    // console.log(editTitle);
-    // console.log(editSpecialty);
   };
   return (
     <>
@@ -53,9 +49,10 @@ function DetailCommentItem({ comment, postId }) {
             <Button
               borderColor={"#5385e7"}
               text={"수정하기"}
-              onClick={() => {
-                setEdit(!edit);
-              }}
+              // onClick={() => {
+              //   setEdit(!edit);
+              // }}
+              onClick={onEditCommentHandler}
             />
           </div>
         ) : (

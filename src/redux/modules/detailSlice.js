@@ -27,53 +27,67 @@ export const __getDetail = createAsyncThunk(
 //삭제
 export const __deleteDetail = createAsyncThunk(
   "deleteDetail",
-  async (postId) => {
-    // console.log(postId);
-
-    await axios.delete(
-      `${process.env.REACT_APP_SERVER_URL}/api/posts/${postId}`,
-      {
-        headers: {
-          Authorization: `${jwt}`,
-        },
-      }
-    );
+  async (postId, thunkAPI) => {
+    try {
+      // console.log(postId);
+      await axios.delete(
+        `${process.env.REACT_APP_SERVER_URL}/api/posts/${postId}`,
+        {
+          headers: {
+            Authorization: `${jwt}`,
+          },
+        }
+      );
+      thunkAPI.dispatch(__getDetail(postId));
+      return thunkAPI.fulfillWithValue(true);
+    } catch (error) {
+      const errorMag = error.response.data.msg;
+      // console.log(error);
+      alert(`${errorMag}`);
+      return thunkAPI.rejectWithValue(false);
+    }
   }
 );
 
 //수정
-export const __editDetail = createAsyncThunk("editDetail", async (payload) => {
-  // console.log(payload);
-  // console.log(payload.postId);
-  try {
-    await axios.patch(
-      `${process.env.REACT_APP_SERVER_URL}/api/posts/${payload.postId}`,
-      {
-        title: payload.title,
-        content: payload.content,
-        classNumber: payload.classNumber,
-        specialty: payload.specialty,
-      },
-      {
-        headers: {
-          Authorization: `${jwt}`,
+export const __editDetail = createAsyncThunk(
+  "editDetail",
+  async (payload, thunkAPI) => {
+    // console.log(payload);
+    // console.log(payload.postId);
+    try {
+      await axios.patch(
+        `${process.env.REACT_APP_SERVER_URL}/api/posts/${payload.postId}`,
+        {
+          title: payload.title,
+          content: payload.content,
+          classNumber: payload.classNumber,
+          specialty: payload.specialty,
         },
-      }
-    );
-  } catch (error) {
-    const errorMag = error.response.data.msg;
-
-    // const errorMag = error.response.data.mag;
-    alert(`${errorMag}`);
-    // return thunkAPI.rejectWithValue(error.response);
+        {
+          headers: {
+            Authorization: `${jwt}`,
+          },
+        }
+      );
+      thunkAPI.dispatch(__getDetail(payload.postId));
+      return thunkAPI.fulfillWithValue(true);
+    } catch (error) {
+      const errorMag = error.response.data.msg;
+      // console.log(error);
+      alert(`${errorMag}`);
+      return thunkAPI.rejectWithValue(false);
+    }
   }
-});
+);
 
 // Detail    detail
 
 const initialState = {
   detail: [],
   isLoading: false,
+  isDelete: false,
+  isEdit: false,
   error: null,
 };
 
@@ -94,17 +108,37 @@ export const detailSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
+    //삭제
+    [__deleteDetail.pending]: (state) => {
+      state.isDelete = false;
+      state.isLoading = false;
+      state.error = null;
+    },
+    [__deleteDetail.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.isDelete = action.payload;
+      // console.log(action.payload);
+    },
+    [__deleteDetail.rejected]: (state, action) => {
+      state.isDelete = action.payload;
+      state.isLoading = false;
+      // state.error = true;
+    },
     //수정
     [__editDetail.pending]: (state) => {
-      state.isLoading = true;
+      state.isEdit = false;
+      state.isLoading = false;
+      state.error = null;
     },
     [__editDetail.fulfilled]: (state, action) => {
       state.isLoading = false;
-      state.detail = action.payload;
+      state.isEdit = action.payload;
+      // console.log(action.payload);
     },
     [__editDetail.rejected]: (state, action) => {
+      state.isEdit = action.payload;
       state.isLoading = false;
-      state.error = action.payload;
+      // state.error = true;
     },
   },
 });
