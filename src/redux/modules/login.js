@@ -53,8 +53,6 @@ export const authSlice = createSlice({
     logout(state) {
       state.isLogin = false;
       cookies.remove("token");
-      cookies.remove("nickname");
-      // window.location.reload();
     },
   },
 });
