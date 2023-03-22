@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { isLoginActions, __login } from "../redux/modules/login";
@@ -7,6 +7,7 @@ import EHInput from "../redux/components/EHInput";
 import Flex from "../redux/components/elem/Flex";
 import Space from "../redux/components/elem/Space";
 import StButton from "../redux/components/Buttons";
+import { cookies } from "../shared/cookie";
 
 const LogIn = () => {
   const dispatch = useDispatch();
@@ -50,12 +51,21 @@ const LogIn = () => {
   // };
   // ============== non-thunk ver ====================
 
+  //============= guard ================
+  useEffect(() => {
+    const token = cookies.get("token");
+    if (token) {
+      navi("/");
+      alert("먼저 로그아웃을 해 주세요.");
+    }
+  });
+
   return (
     <Container onSubmit={submitButtonHandler}>
       <GreetingWrapper>
         <GreetingWrapperSub>
           <GreetingMain>To Gather,</GreetingMain>
-          <GreetingSub>For Together!</GreetingSub>
+          <GreetingSub>For being Together!</GreetingSub>
         </GreetingWrapperSub>
         <StyledImg src="img/login.jpg" />
       </GreetingWrapper>
@@ -139,7 +149,7 @@ const GreetingMain = styled.div`
 
 const GreetingSub = styled.div`
   /* font-size: 50px; */
-  font-size: 5rem;
+  font-size: 3.5rem;
 `;
 
 const LoginContainer = styled.div`
