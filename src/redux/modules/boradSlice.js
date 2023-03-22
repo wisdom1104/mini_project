@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { jwt } from "../../api/jwt";
 
 //조회
 export const __getBoard = createAsyncThunk(

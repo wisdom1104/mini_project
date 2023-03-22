@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { jwt } from "../../api/jwt";
+import { __getBoard } from "./boradSlice";
 
 //조회
 export const __getDetail = createAsyncThunk(
@@ -40,7 +40,7 @@ export const __deleteDetail = createAsyncThunk(
           },
         }
       );
-      thunkAPI.dispatch(__getDetail(postId));
+      thunkAPI.dispatch(__getBoard());
       return thunkAPI.fulfillWithValue(true);
     } catch (error) {
       const errorMag = error.response.data.msg;

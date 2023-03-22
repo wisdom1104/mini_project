@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { jwt } from "../../api/jwt";
 import { __getBoard } from "./boradSlice";
 
 //추가
@@ -13,7 +12,7 @@ export const __addWrite = createAsyncThunk(
         newWrite,
         {
           headers: {
-            Authorization: `${jwt}`,
+            Authorization: decodeURI(document.cookie).replace("token=", ""),
           },
         }
       );
@@ -33,7 +32,7 @@ export const __addWrite = createAsyncThunk(
 const initialState = {
   write: [],
   isLoading: false,
-  isSuccess: false,
+  isSuccess: true,
   error: null,
 };
 
@@ -61,5 +60,5 @@ export const writeSlice = createSlice({
   },
 });
 
-export const {} = writeSlice.actions;
+export const { } = writeSlice.actions;
 export default writeSlice.reducer;

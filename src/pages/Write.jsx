@@ -23,11 +23,11 @@ function Write() {
   const [specialty, setSpecialty] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const { error, isSuccess } = useSelector((state) => state.write);
+  const { isSuccess } = useSelector((state) => state.write);
 
   //추가
   useEffect(() => {
-    if (isSuccess) {
+    if (!isSuccess) {
       setClassNumber("");
       setSpecialty("");
       setTitle("");
@@ -35,7 +35,7 @@ function Write() {
       navigate(`/board`);
       alert("업로드 성공!");
     }
-  }, [error, isSuccess]);
+  }, [isSuccess]);
 
   const submitHandler = async () => {
     if (title.length < 3 || title.length > 25) {

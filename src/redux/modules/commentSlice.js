@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { jwt } from "../../api/jwt";
 import { __getDetail } from "./detailSlice";
 // 작성  /api/posts/{postId}/comments
 // 수정  /api/posts/{postId}/comments/{commentId}
