@@ -19,7 +19,7 @@ export const StPage = styled.div`
   padding: 20px;
 `;
 
-export const SubHeader = styled.h2`
+export const SubHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;

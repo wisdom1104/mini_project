@@ -16,7 +16,7 @@ export const __addComment = createAsyncThunk(
         payload,
         {
           headers: {
-            Authorization: `${jwt}`,
+            Authorization: decodeURI(document.cookie).replace("token=", ""),
           },
         }
       );
@@ -38,7 +38,7 @@ export const __deleteComment = createAsyncThunk(
         `${process.env.REACT_APP_SERVER_URL}/api/posts/${payload.postId}/comments/${payload.commentId}`,
         {
           headers: {
-            Authorization: `${jwt}`,
+            Authorization: decodeURI(document.cookie).replace("token=", ""),
           },
         }
       );
@@ -65,7 +65,7 @@ export const __editComment = createAsyncThunk(
         },
         {
           headers: {
-            Authorization: `${jwt}`,
+            Authorization: decodeURI(document.cookie).replace("token=", ""),
           },
         }
       );
@@ -142,5 +142,5 @@ export const commentSlice = createSlice({
   },
 });
 
-export const {} = commentSlice.actions;
+export const { } = commentSlice.actions;
 export default commentSlice.reducer;

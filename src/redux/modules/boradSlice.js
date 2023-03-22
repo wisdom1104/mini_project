@@ -11,7 +11,7 @@ export const __getBoard = createAsyncThunk(
         `${process.env.REACT_APP_SERVER_URL}/api/posts`,
         {
           headers: {
-            Authorization: `${jwt}`,
+            Authorization: decodeURI(document.cookie).replace("token=", ""),
           },
         }
       );
@@ -51,5 +51,5 @@ export const boardSlice = createSlice({
   },
 });
 
-export const {} = boardSlice.actions;
+export const { } = boardSlice.actions;
 export default boardSlice.reducer;

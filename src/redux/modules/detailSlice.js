@@ -13,7 +13,7 @@ export const __getDetail = createAsyncThunk(
         `${process.env.REACT_APP_SERVER_URL}/api/posts/${postId}`,
         {
           headers: {
-            Authorization: `${jwt}`,
+            Authorization: decodeURI(document.cookie).replace("token=", ""),
           },
         }
         // `${process.env.REACT_APP_SERVER_KEY}/detail/${postId}`
@@ -36,7 +36,7 @@ export const __deleteDetail = createAsyncThunk(
         `${process.env.REACT_APP_SERVER_URL}/api/posts/${postId}`,
         {
           headers: {
-            Authorization: `${jwt}`,
+            Authorization: decodeURI(document.cookie).replace("token=", ""),
           },
         }
       );
@@ -69,7 +69,7 @@ export const __editDetail = createAsyncThunk(
         },
         {
           headers: {
-            Authorization: `${jwt}`,
+            Authorization: decodeURI(document.cookie).replace("token=", ""),
           },
         }
       );
@@ -145,5 +145,5 @@ export const detailSlice = createSlice({
   },
 });
 
-export const {} = detailSlice.actions;
+export const { } = detailSlice.actions;
 export default detailSlice.reducer;
