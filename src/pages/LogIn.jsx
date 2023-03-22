@@ -112,17 +112,34 @@ const GreetingWrapperSub = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding-bottom: 20px;
+  /* sliding */
+  animation-name: slide-in-down;
+  animation-duration: 1.5s;
+  animation-fill-mode: both;
+  @keyframes slide-in-down {
+    0% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0%);
+      opacity: 1;
+    }
+  }
 `;
 
 const GreetingMain = styled.div`
-  font-size: 50px;
+  /* font-size: 50px; */
+  font-size: 5rem;
   font-weight: bold;
   color: rgb(76, 76, 198);
   padding-bottom: 10px;
 `;
 
 const GreetingSub = styled.div`
-  font-size: 50px;
+  /* font-size: 50px; */
+  font-size: 5rem;
 `;
 
 const LoginContainer = styled.div`
@@ -138,7 +155,7 @@ const StyledLink = styled(Link)`
 
 const Container = styled.form`
   gap: 20px;
-  height: 100vh;
+  height: 95vh;
   min-width: 200px;
   display: flex;
   align-items: center;

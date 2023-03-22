@@ -248,6 +248,16 @@ const GreetingWrapperSub = styled.div`
   justify-content: center;
 `;
 
+const GreetingMain = styled.div`
+  font-size: 50px;
+  font-weight: bold;
+  color: rgb(76, 76, 198);
+`;
+
+const GreetingSub = styled.div`
+  font-size: 50px;
+`;
+
 const LoginP = styled.p`
   padding-right: 5px;
 `;
@@ -260,7 +270,7 @@ const LoginContainer = styled.div`
 
 const Container = styled.form`
   gap: 20px;
-  height: 100vh;
+  height: 95vh;
   min-width: 200px;
   display: flex;
   align-items: center;
@@ -275,21 +285,25 @@ const StyledLink = styled(Link)`
 const StyledImg = styled.img`
   border-radius: 50%;
   border: 1px solid rgb(0, 0, 0);
+  /* scale */
+  animation-name: scale;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  @keyframes scale {
+    from {
+      transform: scale(0.8);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
 `;
 
 const Validation = styled.p`
   font-size: 12px;
   color: ${({ match }) => (match ? "black" : "red")};
-`;
-
-const GreetingMain = styled.div`
-  font-size: 50px;
-  font-weight: bold;
-  color: rgb(76, 76, 198);
-`;
-
-const GreetingSub = styled.div`
-  font-size: 50px;
 `;
 
 export default SignUp;
