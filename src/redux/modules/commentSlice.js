@@ -15,7 +15,9 @@ export const __addComment = createAsyncThunk(
         payload,
         {
           headers: {
-            Authorization: decodeURI(document.cookie).replace("token=", ""),
+            // Authorization: decodeURI(document.cookie).replace("token=", ""),
+            // Authorization: decodeURI(document.cookie.token).replace("token=", ""),
+            Authorization: decodeURI(document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1]),
           },
         }
       );
@@ -37,7 +39,9 @@ export const __deleteComment = createAsyncThunk(
         `${process.env.REACT_APP_SERVER_URL}/api/posts/${payload.postId}/comments/${payload.commentId}`,
         {
           headers: {
-            Authorization: decodeURI(document.cookie).replace("token=", ""),
+            // Authorization: decodeURI(document.cookie).replace("token=", ""),
+            // Authorization: decodeURI(document.cookie.token).replace("token=", ""),
+            Authorization: decodeURI(document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1]),
           },
         }
       );
@@ -64,7 +68,9 @@ export const __editComment = createAsyncThunk(
         },
         {
           headers: {
-            Authorization: decodeURI(document.cookie).replace("token=", ""),
+            // Authorization: decodeURI(document.cookie).replace("token=", ""),
+            // Authorization: decodeURI(document.cookie.token).replace("token=", ""),
+            Authorization: decodeURI(document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1]),
           },
         }
       );

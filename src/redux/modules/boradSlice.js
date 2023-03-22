@@ -10,7 +10,9 @@ export const __getBoard = createAsyncThunk(
         `${process.env.REACT_APP_SERVER_URL}/api/posts`,
         {
           headers: {
-            Authorization: decodeURI(document.cookie).replace("token=", ""),
+            // Authorization: decodeURI(document.cookie).replace("token=", ""),
+            // Authorization: decodeURI(document.cookie.token).replace("token=", ""),
+            Authorization: decodeURI(document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1]),
           },
         }
       );

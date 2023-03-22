@@ -12,7 +12,9 @@ export const __addWrite = createAsyncThunk(
         newWrite,
         {
           headers: {
-            Authorization: decodeURI(document.cookie).replace("token=", ""),
+            // Authorization: decodeURI(document.cookie).replace("token=", ""),
+            // Authorization: decodeURI(document.cookie.token).replace("token=", ""),
+            Authorization: decodeURI(document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1]),
           },
         }
       );

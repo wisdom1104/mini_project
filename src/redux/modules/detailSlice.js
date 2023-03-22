@@ -13,7 +13,9 @@ export const __getDetail = createAsyncThunk(
         `${process.env.REACT_APP_SERVER_URL}/api/posts/${postId}`,
         {
           headers: {
-            Authorization: decodeURI(document.cookie).replace("token=", ""),
+            // Authorization: decodeURI(document.cookie).replace("token=", ""),
+            // Authorization: decodeURI(document.cookie.token).replace("token=", ""),
+            Authorization: decodeURI(document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1]),
           },
         }
         // `${process.env.REACT_APP_SERVER_KEY}/detail/${postId}`
@@ -36,7 +38,9 @@ export const __deleteDetail = createAsyncThunk(
         `${process.env.REACT_APP_SERVER_URL}/api/posts/${postId}`,
         {
           headers: {
-            Authorization: decodeURI(document.cookie).replace("token=", ""),
+            // Authorization: decodeURI(document.cookie).replace("token=", ""),
+            // Authorization: decodeURI(document.cookie.token).replace("token=", ""),
+            Authorization: decodeURI(document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1]),
           },
         }
       );
@@ -69,7 +73,9 @@ export const __editDetail = createAsyncThunk(
         },
         {
           headers: {
-            Authorization: decodeURI(document.cookie).replace("token=", ""),
+            // Authorization: decodeURI(document.cookie).replace("token=", ""),
+            // Authorization: decodeURI(document.cookie.token).replace("token=", ""),
+            Authorization: decodeURI(document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1]),
           },
         }
       );
