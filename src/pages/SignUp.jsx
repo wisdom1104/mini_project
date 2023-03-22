@@ -150,7 +150,10 @@ const SignUp = () => {
             }}
             placeholder="아이디를 입력해 주세요."
           />
-          <p style={{ fontSize: "10px" }}>{usernameMsg}</p>
+          <Validation match={usernameMsg === "올바른 형식입니다."}>
+            {usernameMsg}
+          </Validation>
+          {/* <p style={{ fontSize: "10px" }}>{usernameMsg}</p> */}
         </Space>
         <Space>
           <Space css={{ marginTop: "10px", marginBottom: "5px" }}>
@@ -166,7 +169,10 @@ const SignUp = () => {
             }}
             placeholder="비밀번호를 입력해 주세요."
           />
-          <p style={{ fontSize: "10px" }}>{passwordMsg}</p>
+          <Validation match={passwordMsg === "올바른 형식입니다."}>
+            {passwordMsg}
+          </Validation>
+          {/* <p style={{ fontSize: "10px" }}>{passwordMsg}</p> */}
         </Space>
         <Space>
           <Space css={{ marginTop: "10px", marginBottom: "5px" }}>
@@ -179,7 +185,10 @@ const SignUp = () => {
             onChange={onChangeConfirmPw}
             placeholder="비밀번호를 다시 입력해 주세요."
           />
-          <p style={{ fontSize: "10px" }}>{confirmPwMsg}</p>
+          <Validation match={confirmPwMsg === "비밀번호가 일치합니다."}>
+            {confirmPwMsg}
+          </Validation>
+          {/* <p style={{ fontSize: "10px" }}>{confirmPwMsg}</p> */}
         </Space>
         <Space>
           <Space css={{ marginTop: "10px", marginBottom: "5px" }}>닉네임</Space>
@@ -193,7 +202,10 @@ const SignUp = () => {
             }}
             placeholder="닉네임을 입력해 주세요."
           />
-          <p style={{ fontSize: "10px" }}>{nicknameMsg}</p>
+          <Validation match={nicknameMsg === "올바른 형식입니다."}>
+            {nicknameMsg}
+          </Validation>
+          {/* <p style={{ fontSize: "10px" }}>{nicknameMsg}</p> */}
         </Space>
         <Space>
           <Space css={{ marginTop: "10px", marginBottom: "5px" }}>이메일</Space>
@@ -207,7 +219,10 @@ const SignUp = () => {
             }}
             placeholder="이메일을 입력해 주세요."
           />
-          <p style={{ fontSize: "10px" }}>{emailMsg}</p>
+          <Validation match={emailMsg === "올바른 형식입니다."}>
+            {emailMsg}
+          </Validation>
+          {/* <p style={{ fontSize: "10px" }}>{emailMsg}</p> */}
         </Space>
       </Flex>
       <StButton text={"회원가입 완료"} />
@@ -246,6 +261,11 @@ const StyledLink = styled(Link)`
 const StyledImg = styled.img`
   border-radius: 50%;
   border: 1px solid rgb(0, 0, 0);
+`;
+
+const Validation = styled.p`
+  font-size: 12px;
+  color: ${({ match }) => (match ? "black" : "red")};
 `;
 
 export default SignUp;
