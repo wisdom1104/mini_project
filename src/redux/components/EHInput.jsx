@@ -24,8 +24,10 @@ const StyledInput = styled.input`
   margin-bottom: 5px;
 
   &:focus-within {
-    /* box-shadow: rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; */
+    border-radius: 10px;
+    box-shadow: rgba(100, 100, 100, 0.3) 0px 8px 16px -8px;
     border-bottom: 1.5px solid #c9c9c9;
+    background-color: rgba(45, 32, 167, 0.1);
   }
 `;
 

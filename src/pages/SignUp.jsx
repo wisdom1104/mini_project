@@ -128,9 +128,13 @@ const SignUp = () => {
 
   return (
     <Container onSubmit={submitButtonHandler}>
-      <div>
+      <GreetingWrapper>
+        <GreetingWrapperSub>
+          <GreetingMain>투게더</GreetingMain>
+          <GreetingSub>에서 함께해!</GreetingSub>
+        </GreetingWrapperSub>
         <StyledImg src="img/signup.jpg" />
-      </div>
+      </GreetingWrapper>
       <Flex
         css={{
           flexDirection: "column",
@@ -153,7 +157,6 @@ const SignUp = () => {
           <Validation match={usernameMsg === "올바른 형식입니다."}>
             {usernameMsg}
           </Validation>
-          {/* <p style={{ fontSize: "10px" }}>{usernameMsg}</p> */}
         </Space>
         <Space>
           <Space css={{ marginTop: "10px", marginBottom: "5px" }}>
@@ -172,7 +175,6 @@ const SignUp = () => {
           <Validation match={passwordMsg === "올바른 형식입니다."}>
             {passwordMsg}
           </Validation>
-          {/* <p style={{ fontSize: "10px" }}>{passwordMsg}</p> */}
         </Space>
         <Space>
           <Space css={{ marginTop: "10px", marginBottom: "5px" }}>
@@ -188,7 +190,6 @@ const SignUp = () => {
           <Validation match={confirmPwMsg === "비밀번호가 일치합니다."}>
             {confirmPwMsg}
           </Validation>
-          {/* <p style={{ fontSize: "10px" }}>{confirmPwMsg}</p> */}
         </Space>
         <Space>
           <Space css={{ marginTop: "10px", marginBottom: "5px" }}>닉네임</Space>
@@ -205,7 +206,6 @@ const SignUp = () => {
           <Validation match={nicknameMsg === "올바른 형식입니다."}>
             {nicknameMsg}
           </Validation>
-          {/* <p style={{ fontSize: "10px" }}>{nicknameMsg}</p> */}
         </Space>
         <Space>
           <Space css={{ marginTop: "10px", marginBottom: "5px" }}>이메일</Space>
@@ -222,7 +222,6 @@ const SignUp = () => {
           <Validation match={emailMsg === "올바른 형식입니다."}>
             {emailMsg}
           </Validation>
-          {/* <p style={{ fontSize: "10px" }}>{emailMsg}</p> */}
         </Space>
       </Flex>
       <StButton text={"회원가입 완료"} />
@@ -233,6 +232,21 @@ const SignUp = () => {
     </Container>
   );
 };
+
+const GreetingWrapper = styled.div`
+  display: flex;
+  gap: 15px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const GreetingWrapperSub = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`;
 
 const LoginP = styled.p`
   padding-right: 5px;
@@ -266,6 +280,16 @@ const StyledImg = styled.img`
 const Validation = styled.p`
   font-size: 12px;
   color: ${({ match }) => (match ? "black" : "red")};
+`;
+
+const GreetingMain = styled.div`
+  font-size: 50px;
+  font-weight: bold;
+  color: rgb(76, 76, 198);
+`;
+
+const GreetingSub = styled.div`
+  font-size: 50px;
 `;
 
 export default SignUp;

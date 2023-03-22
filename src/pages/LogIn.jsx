@@ -52,9 +52,13 @@ const LogIn = () => {
 
   return (
     <Container onSubmit={submitButtonHandler}>
-      <div>
+      <GreetingWrapper>
+        <GreetingWrapperSub>
+          <GreetingMain>To Gather,</GreetingMain>
+          <GreetingSub>For Together!</GreetingSub>
+        </GreetingWrapperSub>
         <StyledImg src="img/login.jpg" />
-      </div>
+      </GreetingWrapper>
       <Flex
         css={{
           flexDirection: "column",
@@ -93,6 +97,34 @@ const LogIn = () => {
     </Container>
   );
 };
+
+const GreetingWrapper = styled.div`
+  display: flex;
+  gap: 15px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 30px;
+`;
+
+const GreetingWrapperSub = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const GreetingMain = styled.div`
+  font-size: 50px;
+  font-weight: bold;
+  color: rgb(76, 76, 198);
+  padding-bottom: 10px;
+`;
+
+const GreetingSub = styled.div`
+  font-size: 50px;
+`;
+
 const LoginContainer = styled.div`
   font-size: 15px;
   display: flex;
