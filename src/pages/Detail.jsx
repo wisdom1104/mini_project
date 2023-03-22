@@ -1,14 +1,26 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { StHeaderTitle, StPage, SubHeader } from "../GlobalStyles";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import DetailCommentForm from "../redux/components/detailComponents/DetailCommentForm";
 import DetailCommentList from "../redux/components/detailComponents/DetailCommentList";
 import DetailContent from "../redux/components/detailComponents/DetailContent";
 import { __getDetail } from "../redux/modules/detailSlice";
+import { cookies } from "../shared/cookie";
 
 function Detail() {
+  // ========= LEH "Add Guard" ===========
+  const navi = useNavigate();
+
+  useEffect(() => {
+    const token = cookies.get("token");
+    if (!token) {
+      navi("/login");
+    }
+  });
+  // ========= LEH "Add Guard" ===========
+
   const dispatch = useDispatch();
   const { isLoading, error, detail } = useSelector((state) => state.detail);
   const { id } = useParams();

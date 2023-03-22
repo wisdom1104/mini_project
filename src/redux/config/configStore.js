@@ -3,11 +3,11 @@ import board from "../modules/boradSlice";
 import detail from "../modules/detailSlice";
 import write from "../modules/writeSlice";
 import comment from "../modules/commentSlice";
-import login from "../modules/login";
+import auth from "../modules/login";
 
 const store = configureStore({
   reducer: {
-    login,
+    auth: auth,
     board: board,
     detail: detail,
     write: write,

@@ -1,12 +1,16 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { tokenState, __login } from "../redux/modules/login";
-// import { useSetRecoilState } from "recoil"; //recoil
+import { isLoginActions, __login } from "../redux/modules/login";
+import styled from "styled-components";
+import EHInput from "../redux/components/EHInput";
+import Flex from "../redux/components/elem/Flex";
+import Space from "../redux/components/elem/Space";
+import StButton from "../redux/components/Buttons";
+import { cookies } from "../shared/cookie";
 
 const LogIn = () => {
   const dispatch = useDispatch();
-  // const setToken = useSetRecoilState(tokenState); //recoil
 
   const navi = useNavigate();
   const [user, setUser] = useState({
@@ -25,8 +29,9 @@ const LogIn = () => {
   const submitButtonHandler = async (e) => {
     e.preventDefault();
     const response = await dispatch(__login(user));
-    // setToken(response.headers.authorization); // recoil -> atom 업데이트
     if (response.type === "logIn/fulfilled") {
+      dispatch(isLoginActions.login());
+      alert("로그인 되었습니다.");
       navi("/");
     }
   };
@@ -46,36 +51,131 @@ const LogIn = () => {
   // };
   // ============== non-thunk ver ====================
 
+  //============= guard ================
+  useEffect(() => {
+    const token = cookies.get("token");
+    if (token) {
+      navi("/");
+      alert("먼저 로그아웃을 해 주세요.");
+    }
+  });
+
   return (
-    <form onSubmit={submitButtonHandler}>
-      <h1>로그인</h1>
-      <div>
-        <div>
-          <div>아이디</div>
-          <input
+    <Container onSubmit={submitButtonHandler}>
+      <GreetingWrapper>
+        <GreetingWrapperSub>
+          <GreetingMain>To Gather,</GreetingMain>
+          <GreetingSub>For being Together!</GreetingSub>
+        </GreetingWrapperSub>
+        <StyledImg src="img/login.jpg" />
+      </GreetingWrapper>
+      <Flex
+        css={{
+          flexDirection: "column",
+          gap: "10px",
+          marginBottom: "20px",
+        }}
+      >
+        <Space>
+          <Space css={{ marginBottom: "5px" }}>아이디</Space>
+          <EHInput
             type="text"
             value={user.username}
             name="username"
             onChange={changeInputHandler}
             placeholder="아이디를 입력해 주세요."
           />
-        </div>
+        </Space>
 
-        <div>
-          <div>패스워드</div>
-          <input
+        <Space>
+          <Space css={{ marginTop: "10px", marginBottom: "5px" }}>
+            비밀번호
+          </Space>
+          <EHInput
             type="password"
             value={user.password}
             name="password"
             onChange={changeInputHandler}
             placeholder="비밀번호를 입력해 주세요."
           />
-        </div>
-      </div>
-      <button>로그인</button>
-      <button onClick={() => navi("/signup")}>회원가입 하러 가기</button>
-    </form>
+        </Space>
+      </Flex>
+      <StButton text={"로그인"} />
+      <LoginContainer>
+        <StyledLink to="/signup">회원가입 하러 가기</StyledLink>
+      </LoginContainer>
+    </Container>
   );
 };
+
+const GreetingWrapper = styled.div`
+  display: flex;
+  gap: 15px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 30px;
+`;
+
+const GreetingWrapperSub = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 20px;
+  /* sliding */
+  animation-name: slide-in-down;
+  animation-duration: 1.5s;
+  animation-fill-mode: both;
+  @keyframes slide-in-down {
+    0% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0%);
+      opacity: 1;
+    }
+  }
+`;
+
+const GreetingMain = styled.div`
+  /* font-size: 50px; */
+  font-size: 5rem;
+  font-weight: bold;
+  color: rgb(76, 76, 198);
+  padding-bottom: 10px;
+`;
+
+const GreetingSub = styled.div`
+  /* font-size: 50px; */
+  font-size: 3.5rem;
+`;
+
+const LoginContainer = styled.div`
+  font-size: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+`;
+
+const StyledLink = styled(Link)`
+  color: inherit;
+`;
+
+const Container = styled.form`
+  gap: 20px;
+  height: 95vh;
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+const StyledImg = styled.img`
+  border-radius: 50%;
+  border: 1px solid rgb(0, 0, 0);
+`;
 
 export default LogIn;

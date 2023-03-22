@@ -1,4 +1,3 @@
-
 # FE RULING
 
 \***\*\*\*\*\*\*\*\*** 잘 부탁 드립니다 지혜 님,, \***\*\*\*\*\***\*\*\* \***\*\*\*\*\*\*\*\*** 잘 부탁 드립니다 은형 님,, \***\*\*\*\*\***\*\*\*
@@ -145,4 +144,69 @@ dldmsgud1!
 기능이 좀 적더라도 완성도가 높은 게 좋은 것 같다.
 배포를 앞당겨서 .. ..... 같이 디버깅.....
 =======
+
 # dev입니다
+
+======================================================
+======================03/21(TUE)======================
+======================================================
+
+# dev입니다
+
+# JH && EH
+
+11:20-12:15
+
+1. [v] Origin Dev "1st Merging"
+
+# EH
+
+14:00-
+
+0. [V] isLogin Store 18:00
+
+1. [V] cookies.remove("token") re-rendering 18:40
+
+2. [V] login/signup front validation 23:00
+
+- [V] signup front RegExp validation
+- [V] login front RegExp validation
+
+3. [V] path set with token? 23:30
+
+- [V] <Home /> !토큰 => to="/signup"
+- [V] 회원가입 화면 밑에 Link to="/login" "이미 계정이 있으신가요?"
+
+4. [V] header greeting 00:55
+
+- [V] API 명세 추가
+  - login.js => cookies.set("nickname", response.data.nickname, { path: "/" });
+- [V] Header.jsx => {cookies.get("nickname")}님 안녕하세요?
+
+======================================================
+======================03/22(WED)======================
+======================================================
+
+1. [ ] header display
+
+- [ ] if(!token) {<Header/> display: none}
+- [ ] 회원가입 따로
+- [ ] 로그인 따로
+
+2. [ ] CSS
+
+- [ ] login
+- [ ] signup
+- [ ] Header
+- [ ] About
+
+* 상의해야 할 문제
+  home이외 다른 페이지에서 guarding
+  useEffect(() => {
+  const token = cookies.get("token");
+  if (!token) {
+  navi("/signup");
+  }
+  });
+
+# JH

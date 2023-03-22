@@ -5,9 +5,19 @@ import styled from "styled-components";
 import { StHeaderTitle, StPage, SubHeader } from "../GlobalStyles";
 import Button from "../redux/components/Buttons";
 import { __addWrite } from "../redux/modules/writeSlice";
+import { cookies } from "../shared/cookie";
 
 function Write() {
   const navigate = useNavigate();
+  // ========= LEH "Add Guard" ===========
+  useEffect(() => {
+    const token = cookies.get("token");
+    if (!token) {
+      navigate("/login");
+    }
+  });
+  // ========= LEH "Add Guard" ===========
+
   const dispatch = useDispatch();
   const [classNumber, setClassNumber] = useState("");
   const [specialty, setSpecialty] = useState("");
