@@ -148,7 +148,7 @@ dldmsgud1!
 # dev입니다
 
 ======================================================
-========================03/21=========================
+======================03/21(TUE)======================
 ======================================================
 
 # dev입니다
@@ -174,7 +174,7 @@ dldmsgud1!
 
 3. [V] path set with token? 23:30
 
-- [V] !토큰 => to="/signup"
+- [V] <Home /> !토큰 => to="/signup"
 - [V] 회원가입 화면 밑에 Link to="/login" "이미 계정이 있으신가요?"
 
 4. [V] header greeting 00:55
@@ -183,15 +183,30 @@ dldmsgud1!
   - login.js => cookies.set("nickname", response.data.nickname, { path: "/" });
 - [V] Header.jsx => {cookies.get("nickname")}님 안녕하세요?
 
-5. [ ] header display
+======================================================
+======================03/22(WED)======================
+======================================================
+
+1. [ ] header display
 
 - [ ] if(!token) {<Header/> display: none}
+- [ ] 회원가입 따로
+- [ ] 로그인 따로
 
-6. [ ] CSS
+2. [ ] CSS
 
 - [ ] login
 - [ ] signup
 - [ ] Header
 - [ ] About
+
+* 상의해야 할 문제
+  home이외 다른 페이지에서 guarding
+  useEffect(() => {
+  const token = cookies.get("token");
+  if (!token) {
+  navi("/signup");
+  }
+  });
 
 # JH

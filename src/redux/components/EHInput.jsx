@@ -14,16 +14,18 @@ const EHInput = ({ type, placeholder, value, onChange, name }) => {
 };
 
 const StyledInput = styled.input`
-  border: 1px solid #333333;
-  height: 40px;
-  width: 200px;
+  border: none;
+  border-bottom: 1.5px solid #333333;
+  height: 30px;
+  width: 300px;
   outline: none;
-  border-radius: 8px;
   padding-left: 12px;
   padding-right: 12px;
+  margin-bottom: 5px;
 
   &:focus-within {
-    box-shadow: 0 0 0 1px #000;
+    /* box-shadow: rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; */
+    border-bottom: 1.5px solid #c9c9c9;
   }
 `;
 

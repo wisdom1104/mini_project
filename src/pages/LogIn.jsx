@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { isLoginActions, __login } from "../redux/modules/login";
 import styled from "styled-components";
 import EHInput from "../redux/components/EHInput";
+import Flex from "../redux/components/elem/Flex";
+import Space from "../redux/components/elem/Space";
+import StButton from "../redux/components/Buttons";
 
 const LogIn = () => {
   const dispatch = useDispatch();
@@ -49,10 +52,18 @@ const LogIn = () => {
 
   return (
     <Container onSubmit={submitButtonHandler}>
-      <h1>로그인</h1>
       <div>
-        <div>
-          <div>아이디</div>
+        <StyledImg src="img/login.jpg" />
+      </div>
+      <Flex
+        css={{
+          flexDirection: "column",
+          gap: "10px",
+          marginBottom: "20px",
+        }}
+      >
+        <Space>
+          <Space css={{ marginBottom: "5px" }}>아이디</Space>
           <EHInput
             type="text"
             value={user.username}
@@ -60,10 +71,12 @@ const LogIn = () => {
             onChange={changeInputHandler}
             placeholder="아이디를 입력해 주세요."
           />
-        </div>
+        </Space>
 
-        <div>
-          <div>패스워드</div>
+        <Space>
+          <Space css={{ marginTop: "10px", marginBottom: "5px" }}>
+            비밀번호
+          </Space>
           <EHInput
             type="password"
             value={user.password}
@@ -71,22 +84,39 @@ const LogIn = () => {
             onChange={changeInputHandler}
             placeholder="비밀번호를 입력해 주세요."
           />
-        </div>
-      </div>
-      <button>로그인</button>
-      <button onClick={() => navi("/signup")}>회원가입 하러 가기</button>
+        </Space>
+      </Flex>
+      <StButton text={"로그인"} />
+      <LoginContainer>
+        <StyledLink to="/signup">회원가입 하러 가기</StyledLink>
+      </LoginContainer>
     </Container>
   );
 };
+const LoginContainer = styled.div`
+  font-size: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+`;
+
+const StyledLink = styled(Link)`
+  color: inherit;
+`;
 
 const Container = styled.form`
   gap: 20px;
-  height: 95vh;
+  height: 100vh;
   min-width: 200px;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
+`;
+
+const StyledImg = styled.img`
+  border-radius: 50%;
+  border: 1px solid rgb(0, 0, 0);
 `;
 
 export default LogIn;
