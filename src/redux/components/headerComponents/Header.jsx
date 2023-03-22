@@ -24,15 +24,16 @@ const Header = () => {
   const logout = () => {
     dispatch(isLoginActions.logout());
     alert("로그아웃 되었습니다.");
-    window.location.reload();
     navi("/login");
+    // window.location.reload();
+    // 이거는 리로딩인데. 쿠키 정보 리렌더링 코드가 있으면 더 완성도 높을 듯..
   };
 
   return (
     <StyledHeader>
       <GreetingContainer>
         <GreetingNickname>{cookies.get("nickname")}</GreetingNickname>
-        <Greeting>님 안녕하세요?</Greeting>
+        <Greeting>님 안녕하세요!</Greeting>
       </GreetingContainer>
       <HeaderNav>
         <HeaderUl>

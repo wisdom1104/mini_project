@@ -54,6 +54,7 @@ export const authSlice = createSlice({
       state.isLogin = false;
       cookies.remove("token");
       cookies.remove("nickname");
+      // window.location.reload();
     },
   },
 });

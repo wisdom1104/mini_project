@@ -4,8 +4,20 @@ import { useNavigate } from "react-router-dom";
 import BoardPagination from "../redux/components/boardComponents/BoardPagination";
 import BoardTable from "../redux/components/boardComponents/BoardTable";
 import { __getBoard } from "../redux/modules/boradSlice";
+import { cookies } from "../shared/cookie";
 
 function Board() {
+  // ========= LEH "Add Guard" ===========
+  const navi = useNavigate();
+
+  useEffect(() => {
+    const token = cookies.get("token");
+    if (!token) {
+      navi("/login");
+    }
+  });
+  // ========= LEH "Add Guard" ===========
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isLoading, error, board } = useSelector((state) => state.board);

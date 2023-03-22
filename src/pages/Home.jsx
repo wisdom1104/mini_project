@@ -3,14 +3,16 @@ import { useNavigate } from "react-router-dom";
 import { cookies } from "../shared/cookie";
 
 function Home() {
+  // ========= LEH "Add Guard" ===========
   const navi = useNavigate();
 
   useEffect(() => {
     const token = cookies.get("token");
     if (!token) {
-      navi("/signup");
+      navi("/login");
     }
   });
+  // ========= LEH "Add Guard" ===========
 
   return (
     <div>
