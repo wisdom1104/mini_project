@@ -40,7 +40,7 @@ function Detail() {
   }
   // console.log(detail.commentList);
   return (
-    <StDetailPage>
+    <StPage>
       <StLayout>
         <StBody>
           <SubHeader>
@@ -51,7 +51,7 @@ function Detail() {
           <DetailCommentList detail={detail} postId={id} />
         </StBody>
       </StLayout>
-    </StDetailPage>
+    </StPage>
   );
 }
 
@@ -70,10 +70,4 @@ const StBody = styled.div`
   max-width: 1000px;
   min-height: 600px;
   height: auto;
-`;
-
-const StDetailPage = styled.div`
-  height: calc(100% - 170px);
-  background-image: url(https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcZXn9R%2Fbtr5pa5degz%2FV2hd9LvzX1hLOKpmK9WNK0%2Fimg.png);
-  padding-top: 170px;
 `;

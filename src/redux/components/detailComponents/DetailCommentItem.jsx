@@ -180,6 +180,7 @@ const StContent = styled.div`
   /* background-color: gray; */
   width: 85%;
   word-wrap: break-word;
+  line-height: 20px;
 `;
 
 const StInput = styled.input`

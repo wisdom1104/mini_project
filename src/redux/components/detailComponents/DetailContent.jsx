@@ -296,6 +296,7 @@ const StContent = styled.div`
   /* background-color: lightpink; */
   word-wrap: break-word;
   min-height: 198px;
+  line-height: 25px;
   /* height: fit-content; */
 `;
 

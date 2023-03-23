@@ -39,11 +39,12 @@ const Router = () => {
         <Route path="/board" element={<Board />} />
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/write" element={<Write />} />
-        {isLogin === false ?
+        {isLogin === false ? (
           <>
             <Route path="/login" element={<LogIn />} />
             <Route path="/signup" element={<SignUp />} />
-          </> : null}
+          </>
+        ) : null}
       </Routes>
     </BrowserRouter>
   );
