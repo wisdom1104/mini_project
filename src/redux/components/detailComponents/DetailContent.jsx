@@ -38,7 +38,7 @@ function DetailContent({ detail, postId }) {
       return;
     }
 
-    if (editClassNumber.length < 10 || editClassNumber.length > 2000) {
+    if (editContent.length < 10 || editContent.length > 2000) {
       alert("내용은 10자 이상, 2000자 이하여야 합니다!");
       return;
     }
@@ -116,7 +116,7 @@ function DetailContent({ detail, postId }) {
                     <div>
                       <StSelect
                         name="setEditClassNumber"
-                        value={setEditClassNumber}
+                        value={editClassNumber}
                         onChange={handleChangeClass}
                       >
                         <option value={"6기"}>6기</option>

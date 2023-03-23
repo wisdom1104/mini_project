@@ -40,7 +40,7 @@ export const __login = createAsyncThunk("logIn", async (thisUser, thunk) => {
 });
 
 const initialState = {
-  isLogin: false,
+  isLogin: true,
 };
 
 export const authSlice = createSlice({
