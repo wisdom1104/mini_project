@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { StHeaderTitle, StPage, SubHeader } from "../GlobalStyles";
+import { StHeaderTitle, StLayout, StPage, SubHeader } from "../GlobalStyles";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import DetailCommentForm from "../redux/components/detailComponents/DetailCommentForm";
 import DetailCommentList from "../redux/components/detailComponents/DetailCommentList";
@@ -40,30 +40,40 @@ function Detail() {
   }
   // console.log(detail.commentList);
   return (
-    <StPage>
-      <SubHeader>
-        <StHeaderTitle>Detail&nbsp;&nbsp;&nbsp;</StHeaderTitle>
-      </SubHeader>
-      <StBody>
-        <DetailContent detail={detail} postId={id} />
-        <DetailCommentForm detail={detail} postId={id} />
-        <DetailCommentList detail={detail} postId={id} />
-      </StBody>
-    </StPage>
+    <StDetailPage>
+      <StLayout>
+        <StBody>
+          <SubHeader>
+            <StHeaderTitle>Detail&nbsp;&nbsp;&nbsp;</StHeaderTitle>
+          </SubHeader>
+          <DetailContent detail={detail} postId={id} />
+          <DetailCommentForm detail={detail} postId={id} />
+          <DetailCommentList detail={detail} postId={id} />
+        </StBody>
+      </StLayout>
+    </StDetailPage>
   );
 }
 
 export default Detail;
 
 const StBody = styled.div`
-  /* background-color: wheat; */
+  background-color: white;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: flex-start; */
-  padding: 50px;
-  min-height: 600px;
-  width: 80%;
   gap: 20px;
+  width: 90%;
+  margin: 10px auto;
+  padding: 20px 20px;
+  max-width: 1000px;
+  min-height: 600px;
+  height: auto;
+`;
+
+const StDetailPage = styled.div`
+  height: calc(100% - 170px);
+  background-image: url(https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcZXn9R%2Fbtr5pa5degz%2FV2hd9LvzX1hLOKpmK9WNK0%2Fimg.png);
+  padding-top: 170px;
 `;

@@ -4,9 +4,12 @@ import styled from "styled-components";
 import { BtnBox } from "../../../GlobalStyles";
 import { __deleteComment, __editComment } from "../../modules/commentSlice";
 import { __getDetail } from "../../modules/detailSlice";
+import { cookies } from "../../../shared/cookie";
+import { FaTrashAlt, FaWrench } from "react-icons/fa";
+
 import Button from "../Buttons";
 
-function DetailCommentItem({ comment, postId }) {
+function DetailCommentItem({ detail, comment, postId }) {
   const [editContent, setEditContent] = useState(comment?.content || "");
   const [edit, setEdit] = useState(false);
   // const { error, isCommentEdit } = useSelector((state) => state.detail);
@@ -34,38 +37,78 @@ function DetailCommentItem({ comment, postId }) {
   return (
     <>
       <div>
-        {!edit ? (
-          <StComment>
-            <StUser>
-              <StUserInfo>
-                <UserImg src="https://platum.kr/wp-content/uploads/2019/12/64497335_490811004989301_7459130390851092480_n.png" />
-                <span style={{ fontSize: "22px", fontWeight: "500" }}>
-                  {comment.nickname}
-                </span>
-              </StUserInfo>
-              <StIdTime>
-                {comment.id} / {comment.createdAt}
-              </StIdTime>
-            </StUser>
-            <StContent>{comment?.content}</StContent>
-            <BtnBox>
-              <Button
-                text={"삭제하기"}
-                borderColor={"#e75388"}
-                onClick={(e) => {
-                  onDeleteCommentHandler(comment.id);
-                }}
-              />
-              <Button
-                borderColor={"#5385e7"}
-                text={"수정하기"}
-                onClick={() => {
-                  setEdit(!edit);
-                }}
-                // onClick={onEditCommentHandler}
-              />
-            </BtnBox>
-          </StComment>
+        {detail.viewerRoleAdmin === true ||
+        comment.nickname === cookies.get("nickname") ? (
+          <div>
+            {!edit ? (
+              <StComment>
+                <StUser>
+                  <StUserInfo>
+                    <UserImg src="https://platum.kr/wp-content/uploads/2019/12/64497335_490811004989301_7459130390851092480_n.png" />
+                    <span style={{ fontSize: "22px", fontWeight: "500" }}>
+                      {comment.nickname}
+                    </span>
+                  </StUserInfo>
+                  <StIdTime>
+                    {comment.id} / {comment.createdAt}
+                  </StIdTime>
+                </StUser>
+                <StRowBox>
+                  <StContent>{comment?.content}</StContent>
+                  <BtnBox>
+                    <Button
+                      borderColor={"#5385e7"}
+                      text={<FaWrench />}
+                      onClick={() => {
+                        setEdit(!edit);
+                      }}
+                      // onClick={onEditCommentHandler}
+                    />
+                    <Button
+                      text={<FaTrashAlt />}
+                      borderColor={"#e75388"}
+                      onClick={(e) => {
+                        onDeleteCommentHandler(comment.id);
+                      }}
+                    />
+                  </BtnBox>
+                </StRowBox>
+              </StComment>
+            ) : (
+              <StComment>
+                <StUser>
+                  <StUserInfo>
+                    <UserImg src="https://platum.kr/wp-content/uploads/2019/12/64497335_490811004989301_7459130390851092480_n.png" />
+                    <span style={{ fontSize: "22px", fontWeight: "500" }}>
+                      {comment.nickname}
+                    </span>
+                  </StUserInfo>
+                  <StIdTime>
+                    {comment.id} / {comment.createdAt}
+                  </StIdTime>
+                </StUser>
+                <StRowBox>
+                  <StContent>
+                    <StInput
+                      type="text"
+                      value={editContent}
+                      onChange={(e) => {
+                        setEditContent(e.target.value);
+                      }}
+                    />
+                  </StContent>
+                  <BtnBox>
+                    <Button
+                      style={{}}
+                      text={<FaWrench />}
+                      borderColor={"#5385e7"}
+                      onClick={onEditCommentHandler}
+                    />
+                  </BtnBox>
+                </StRowBox>
+              </StComment>
+            )}
+          </div>
         ) : (
           <StComment>
             <StUser>
@@ -79,23 +122,7 @@ function DetailCommentItem({ comment, postId }) {
                 {comment.id} / {comment.createdAt}
               </StIdTime>
             </StUser>
-            <StContent>
-              <StInput
-                type="text"
-                value={editContent}
-                onChange={(e) => {
-                  setEditContent(e.target.value);
-                }}
-              />
-            </StContent>
-            <BtnBox>
-              <Button
-                style={{}}
-                text={"수정완료"}
-                borderColor={"#5385e7"}
-                onClick={onEditCommentHandler}
-              />
-            </BtnBox>
+            <StContent>{comment?.content}</StContent>
           </StComment>
         )}
       </div>
@@ -108,8 +135,8 @@ export default DetailCommentItem;
 const StComment = styled.div`
   /* background-color: lightcoral; */
   border-top: 1px solid gray;
-  padding: 20px 10px;
-  min-height: 150px;
+  padding: 15px 10px;
+  min-height: 70px;
 `;
 
 const StUser = styled.div`
@@ -139,20 +166,33 @@ const StIdTime = styled.div`
   color: gray;
 `;
 
+const StRowBox = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+`;
+
 const StContent = styled.div`
   font-size: 17px;
-  min-height: 70px;
+  min-height: 30px;
   margin-top: 20px;
   /* background-color: gray; */
+  width: 85%;
+  word-wrap: break-word;
 `;
 
 const StInput = styled.input`
   font-size: 15px;
-  width: 97%;
-  min-height: 55px;
-  border: 1px dotted black;
+  width: 100%;
+  min-height: 30px;
   border-radius: 50px;
   padding: 5px 10px;
   border-radius: 10px;
-  border: 1px dotted black;
+  background-color: RGB(225, 231, 255);
+  border: none;
+  &:focus {
+    background-color: RGB(205, 211, 255);
+    outline: none;
+  }
 `;

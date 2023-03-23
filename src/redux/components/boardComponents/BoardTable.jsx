@@ -46,11 +46,14 @@ function BoardTable({ board }) {
 export default BoardTable;
 
 const TableBox = styled.div`
+  color: RGB(75, 81, 131);
+  font-weight: 500;
+
   /* background-color: green; */
   /* width: 90%; */
   margin: auto;
   border-radius: 20px;
-  padding: 40px 10px;
+  padding: 20px 10px;
   max-width: 1000px;
 `;
 

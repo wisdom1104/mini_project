@@ -55,7 +55,7 @@ function DetailCommentForm({ postId }) {
 export default DetailCommentForm;
 
 const StForm = styled.form`
-  /* background-color: green; */
+  /* background-color: gray; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -67,31 +67,34 @@ const StForm = styled.form`
 `;
 
 const StInput = styled.input`
-  border: 1px dashed black;
+  border: 1px dashed RGB(75, 81, 131);
+  /* border: none; */
   border-right: none;
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
   padding: 5px 10px;
-  width: 80%;
+  width: 82%;
   height: 28px;
+  background-color: RGB(225, 231, 255);
   &:focus {
-    border: 1px solid black;
-    border-right: none;
+    background-color: RGB(205, 211, 255);
     outline: none;
   }
 `;
 
 const StButton = styled.button`
-  border: 1px dashed ${(props) => props.borderColor};
-  background-color: ${(props) => props.backgroundColor};
+  border: 1px dashed RGB(75, 81, 131);
+  /* border: none; */
+  border-left: none;
+  background-color: RGB(225, 231, 255);
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
   padding: 10px;
   height: 40px;
-  color: ${(props) => props.borderColor};
+  color: RGB(75, 81, 131);
   font-size: 17px;
   &:hover {
-    border: 1px solid ${(props) => props.borderColor};
-    cursor: pointer;
+    background-color: RGB(205, 211, 255);
+    outline: none;
   }
 `;

@@ -15,7 +15,7 @@ const StyledHeader = styled.div`
   flex-direction: column;
   z-index: 50;
   background-color: white;
-  opacity: 0.8;
+  opacity: 0.6;
 `;
 
 const HeaderNav = styled.nav`

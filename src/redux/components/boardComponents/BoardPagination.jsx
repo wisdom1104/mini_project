@@ -72,15 +72,19 @@ function BoardPagination({ page, totalPosts, limit, setPage }) {
 export default BoardPagination;
 
 const Pagination = styled.div`
+  /* color: RGB(75, 81, 131); */
+
   /* background-color: brown; */
   display: flex;
   justify-content: center;
   /* margin: 10px; */
   position: absolute;
-  bottom: 0;
+  bottom: 10px;
   left: 40%;
 `;
 
 const NBtn = styled.button`
   border: none;
+  color: RGB(75, 81, 131);
+  background-color: transparent;
 `;

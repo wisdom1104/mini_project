@@ -51,29 +51,29 @@ function Board() {
     <>
       <StPage>
         <StLayout>
-        <RelativeBox>
-          <SubHeader>
-            <StHeaderTitle>Board&nbsp;&nbsp;&nbsp;</StHeaderTitle>
-            <Button
-              text={"작성하기"}
-              // borderColor={}
-              onClick={() => {
-                navigate(`/write`);
-              }}
-            />
-          </SubHeader>
+          <RelativeBox>
+            <SubHeader>
+              <StHeaderTitle>Board&nbsp;&nbsp;&nbsp;</StHeaderTitle>
+              <Button
+                text={"작성하기"}
+                // borderColor={}
+                onClick={() => {
+                  navigate(`/write`);
+                }}
+              />
+            </SubHeader>
 
-          <StBoard>
-            <BoardTable board={postsData(board)} />
+            <StBoard>
+              <BoardTable board={postsData(board)} />
 
-            <BoardPagination
-              limit={limit}
-              page={page}
-              totalPosts={board.length}
-              setPage={setPage}
-            />
-          </StBoard>
-        </RelativeBox>
+              <BoardPagination
+                limit={limit}
+                page={page}
+                totalPosts={board.length}
+                setPage={setPage}
+              />
+            </StBoard>
+          </RelativeBox>
         </StLayout>
       </StPage>
     </>
@@ -84,16 +84,14 @@ export default Board;
 
 const RelativeBox = styled.div`
   position: relative;
-  /* background-color: steelblue; */
+  background-color: white;
+  /* background-image: url(https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbKRId6%2Fbtr5AYQnJrG%2FZFPHllLCuk6u79gN7R5cuk%2Fimg.png); */
   width: 90%;
-  margin: auto;
-  /* margin-top: 10px;s */
+  margin: 10px auto;
   border-radius: 20px;
-  padding: 0px 30px 30px 30px;
+  padding: 20px 20px;
   max-width: 1000px;
-  min-height: 800px;
+  min-height: 714px;
   /* min-width: 500px; */
 `;
-const StBoard= styled.div`
-  height: 10px;
-`
+const StBoard = styled.div``;

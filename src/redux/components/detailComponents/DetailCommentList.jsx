@@ -13,11 +13,15 @@ function DetailCommentList({ detail, postId }) {
           {detail?.commentList?.length > 0 ? (
             detail.commentList.map((comment) => (
               <div key={comment.id}>
-                <DetailCommentItem comment={comment} postId={postId} />
+                <DetailCommentItem
+                  detail={detail}
+                  comment={comment}
+                  postId={postId}
+                />
               </div>
             ))
           ) : (
-            <div>댓글이 없습니다.</div>
+            <div style={{ paddingTop: "5px" }}>댓글이 없습니다.</div>
           )}
         </div>
       </StComment>

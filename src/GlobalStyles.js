@@ -10,9 +10,9 @@ export const GlobalStyles = createGlobalStyle`
 `;
 
 export const StPage = styled.div`
-  height: 100vh;
+  height: calc(100% - 170px);
   background-image: url(https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcZXn9R%2Fbtr5pa5degz%2FV2hd9LvzX1hLOKpmK9WNK0%2Fimg.png);
-  padding-top: 120px;
+  padding-top: 170px;
 `;
 
 export const StLayout = styled.div`
@@ -21,9 +21,9 @@ export const StLayout = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: censter;
   /* margin-top: 20px; */
-  padding: 20px;
+  padding: 0px 20px;
   height: 100%;
   box-sizing: border-box;
 `;
@@ -38,7 +38,8 @@ export const SubHeader = styled.div`
 `;
 
 export const StHeaderTitle = styled.h2`
-  font-size: 100px;
+  color: RGB(75, 81, 131);
+  font-size: 80px;
   text-decoration-line: underline;
   text-decoration-style: solid;
   text-decoration-thickness: 5px;

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { StHeaderTitle, StPage, SubHeader } from "../GlobalStyles";
+import { StHeaderTitle, StLayout, StPage, SubHeader } from "../GlobalStyles";
 import Button from "../redux/components/Buttons";
 import { __addWrite } from "../redux/modules/writeSlice";
 import { cookies } from "../shared/cookie";
@@ -50,54 +50,96 @@ function Write() {
     dispatch(__addWrite({ classNumber, specialty, title, content }));
   };
 
+  const handleChangeClass = (e) => {
+    setClassNumber(e.target.value);
+  };
+
+  const handleChangeSpecialty = (e) => {
+    setSpecialty(e.target.value);
+  };
+
   return (
     <>
       <StPage>
-        <SubHeader>
-          <StHeaderTitle>Write&nbsp;&nbsp;&nbsp;</StHeaderTitle>
-        </SubHeader>
+        <StLayout>
+          <StForm
+            onSubmit={(e) => {
+              e.preventDefault();
+            }}
+          >
+            <SubHeader>
+              <StHeaderTitle>Write&nbsp;&nbsp;&nbsp;</StHeaderTitle>
+            </SubHeader>
 
-        <StForm
-          onSubmit={(e) => {
-            e.preventDefault();
-          }}
-        >
-          <ClassSpecialty>
-            <StClass
+            <ClassSpecialty>
+              {/* <StClass
+                type="text"
+                value={classNumber}
+                placeholder="기수를 적어주세요"
+                onChange={(e) => {
+                  setClassNumber(e.target.value);
+                }}
+              /> */}
+              <StSelect
+                name="classNumber"
+                value={classNumber}
+                onChange={handleChangeClass}
+              >
+                <option sdisabled elected>
+                  --------------- 기수를 선택해주세요 ---------------
+                </option>
+
+                <option value={"6기"}>6기</option>
+                <option value={"8기"}>8기</option>
+                <option value={"7기"}>7기</option>
+                <option value={"9기"}>9기</option>
+                <option value={"10기"}>10기</option>
+                <option value={"11기"}>11기</option>
+                <option value={"12기"}>12기</option>
+                <option value={"13기"}>13기</option>
+                <option value={"14기"}>14기</option>
+                <option value={"15기"}>15기</option>
+              </StSelect>
+              {/* <StSpecialty
+                type="text"
+                value={specialty}
+                placeholder="주특기를 적어주세요"
+                onChange={(e) => {
+                  setSpecialty(e.target.value);
+                }}
+              /> */}
+              <StSelect
+                name="specialty"
+                value={specialty}
+                onChange={handleChangeSpecialty}
+              >
+                <option selected>
+                  --------------- 주특기를 선택해주세요 ---------------
+                </option>
+                <option value={"React"}>React</option>
+                <option value={"Spring"}>Spring</option>
+                <option value={"NodeJs"}>NodeJs</option>
+              </StSelect>
+            </ClassSpecialty>
+            <StTitle
               type="text"
-              value={classNumber}
-              placeholder="기수를 적어주세요"
+              value={title}
+              placeholder="제목을 적어주세요"
               onChange={(e) => {
-                setClassNumber(e.target.value);
+                setTitle(e.target.value);
               }}
             />
-            <StSpecialty
+            <StContent
               type="text"
-              value={specialty}
-              placeholder="주특기를 적어주세요"
+              value={content}
+              placeholder="내용을 적어주세요"
               onChange={(e) => {
-                setSpecialty(e.target.value);
+                setContent(e.target.value);
               }}
             />
-          </ClassSpecialty>
-          <StTitle
-            type="text"
-            value={title}
-            placeholder="제목을 적어주세요"
-            onChange={(e) => {
-              setTitle(e.target.value);
-            }}
-          />
-          <StContent
-            type="text"
-            value={content}
-            placeholder="내용을 적어주세요"
-            onChange={(e) => {
-              setContent(e.target.value);
-            }}
-          />
-          <Button text={"업로드하기"} onClick={submitHandler} />
-        </StForm>
+            <Button text={"업로드하기"} onClick={submitHandler} />
+          </StForm>
+        </StLayout>
       </StPage>
     </>
   );
@@ -106,14 +148,17 @@ function Write() {
 export default Write;
 
 const StForm = styled.form`
-  /* background-color: wheat; */
+  background-color: white;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 50px;
-  min-height: 600px;
   gap: 20px;
+  width: 90%;
+  margin: 10px auto;
+  padding: 20px 20px;
+  max-width: 1000px;
+  min-height: 714px;
 `;
 
 const ClassSpecialty = styled.div`
@@ -121,38 +166,75 @@ const ClassSpecialty = styled.div`
   gap: 30px;
 `;
 
-const StClass = styled.input`
-  background-color: lightgray;
+// const StClass = styled.input`
+//   border-radius: 20px;
+//   border: 1px solid black;
+//   width: 300px;
+//   height: 40px;
+//   padding: 0px 20px;
+//   background-color: RGB(225, 231, 255);
+//   border: none;
+//   &:focus {
+//     background-color: RGB(205, 211, 255);
+//     outline: none;
+//   }
+// `;
+// const StSpecialty = styled.input`
+//   border-radius: 20px;
+//   border: 1px solid black;
+//   width: 300px;
+//   height: 40px;
+//   padding: 0px 20px;
+//   background-color: RGB(225, 231, 255);
+//   border: none;
+//   &:focus {
+//     background-color: RGB(205, 211, 255);
+//     outline: none;
+//   }
+// `;
+
+const StSelect = styled.select`
+  -webkit-appearance: none; /* for chrome */
+  -moz-appearance: none; /*for firefox*/
+  appearance: none;
+  text-align-last: center;
   border-radius: 20px;
   border: 1px solid black;
-  width: 260px;
+  width: 340px;
   height: 40px;
   padding: 0px 20px;
-`;
-const StSpecialty = styled.input`
-  background-color: lightgray;
-  border-radius: 20px;
-  border: 1px solid black;
-  width: 260px;
-  height: 40px;
-  padding: 0px 20px;
+  background-color: RGB(225, 231, 255);
+  border: none;
+  &:focus {
+    background-color: RGB(205, 211, 255);
+    outline: none;
+  }
 `;
 
 const StTitle = styled.input`
-  background-color: lightgray;
   border-radius: 20px;
   border: 1px solid black;
-  width: 600px;
+  width: 670px;
   height: 40px;
   padding: 0px 20px;
+  background-color: RGB(225, 231, 255);
+  border: none;
+  &:focus {
+    background-color: RGB(205, 211, 255);
+    outline: none;
+  }
 `;
 
 const StContent = styled.textarea`
-  background-color: lightgray;
   border-radius: 20px;
-  border: 1px solid black;
   resize: none;
-  width: 600px;
-  height: 400px;
+  width: 670px;
+  height: 380px;
   padding: 20px;
+  background-color: RGB(225, 231, 255);
+  border: none;
+  &:focus {
+    background-color: RGB(205, 211, 255);
+    outline: none;
+  }
 `;

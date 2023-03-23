@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { BtnBox } from "../../../GlobalStyles";
+import { FaTrashAlt, FaWrench, FaUndoAlt } from "react-icons/fa";
+
 import {
   __deleteDetail,
   __editDetail,
@@ -31,6 +33,15 @@ function DetailContent({ detail, postId }) {
 
   //수정
   const onEditDetailHandler = async () => {
+    if (editTitle.length < 3 || editTitle.length > 25) {
+      alert("제목은 3자 이상, 25자 이하여야 합니다!");
+      return;
+    }
+
+    if (editClassNumber.length < 10 || editClassNumber.length > 2000) {
+      alert("내용은 10자 이상, 2000자 이하여야 합니다!");
+      return;
+    }
     const payload = {
       postId,
       title: editTitle,
@@ -43,6 +54,13 @@ function DetailContent({ detail, postId }) {
     // dispatch(__getDetail(payload.postId));
     alert("게시글 수정 완료!");
     setEdit(!edit);
+  };
+  const handleChangeClass = (e) => {
+    setEditClassNumber(e.target.value);
+  };
+
+  const handleChangeSpecialty = (e) => {
+    setEditSpecialty(e.target.value);
   };
 
   if (!detail) {
@@ -73,13 +91,13 @@ function DetailContent({ detail, postId }) {
                 <BtnBox>
                   <Button
                     borderColor={"#5385e7"}
-                    text={"수정하기"}
+                    text={<FaWrench />}
                     onClick={() => {
                       setEdit(!edit);
                     }}
                   />
                   <Button
-                    text={"삭제하기"}
+                    text={<FaTrashAlt />}
                     borderColor={"#e75388"}
                     onClick={(e) => {
                       onDeleteDetailHandler(detail.id);
@@ -96,21 +114,46 @@ function DetailContent({ detail, postId }) {
                       {detail.nickname}
                     </StNick>
                     <div>
-                      <UserInput
+                      <StSelect
+                        name="setEditClassNumber"
+                        value={setEditClassNumber}
+                        onChange={handleChangeClass}
+                      >
+                        <option value={"6기"}>6기</option>
+                        <option value={"8기"}>8기</option>
+                        <option value={"7기"}>7기</option>
+                        <option value={"9기"}>9기</option>
+                        <option value={"10기"}>10기</option>
+                        <option value={"11기"}>11기</option>
+                        <option value={"12기"}>12기</option>
+                        <option value={"13기"}>13기</option>
+                        <option value={"14기"}>14기</option>
+                        <option value={"15기"}>15기</option>
+                      </StSelect>
+                      {/* <UserInput
                         type="text"
                         value={editClassNumber}
                         onChange={(e) => {
                           setEditClassNumber(e.target.value);
                         }}
-                      />
+                      /> */}
                       <span> - </span>
-                      <UserInput
+                      <StSelect
+                        name="editSpecialty"
+                        value={editSpecialty}
+                        onChange={handleChangeSpecialty}
+                      >
+                        <option value={"React"}>React</option>
+                        <option value={"Spring"}>Spring</option>
+                        <option value={"NodeJs"}>NodeJs</option>
+                      </StSelect>
+                      {/* <UserInput
                         type="text"
                         value={editSpecialty}
                         onChange={(e) => {
                           setEditSpecialty(e.target.value);
-                        }}
-                      />
+                        }} */}
+                      {/* /> */}
                     </div>
                   </StUserInfo>
 
@@ -143,13 +186,13 @@ function DetailContent({ detail, postId }) {
                 <BtnBox>
                   <Button
                     style={{}}
-                    text={"수정완료"}
+                    text={<FaWrench />}
                     borderColor={"#5385e7"}
                     onClick={onEditDetailHandler}
                   />
                   <Button
                     borderColor={"#e75388"}
-                    text={"수정취소"}
+                    text={<FaUndoAlt />}
                     onClick={() => {
                       setEdit(!edit);
                     }}
@@ -188,20 +231,22 @@ const StDetailContent = styled.div`
   display: flex;
   flex-direction: column;
   padding: 20px;
-  min-height: 200px;
+  min-height: 300px;
   width: 90%;
   border: 1px solid black;
   border-radius: 20px;
 `;
 
 const StBox = styled.div`
-  background-color: white;
+  /* background-color: white; */
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
   padding: 20px;
   min-height: 200px;
   gap: 20px;
+  box-sizing: border-box;
+  overflow: hidden;
 `;
 
 const StUser = styled.div`
@@ -236,7 +281,7 @@ const StIdTime = styled.div`
 const StTitle = styled.div`
   display: flex;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 10px;
   border-top: 1px solid gray;
   height: 40px;
   font-size: 20px;
@@ -248,33 +293,64 @@ const StContent = styled.div`
 
   border-top: 1px solid lightgray;
   padding-top: 20px;
-  /* background-color: gray; */
+  /* background-color: lightpink; */
+  word-wrap: break-word;
+  min-height: 198px;
+  /* height: fit-content; */
 `;
 
-const UserInput = styled.input`
-  font-size: 15px;
-  width: 100px;
-  border: 1px dotted black;
-  border-radius: 50px;
-  padding: 5px 10px;
-  border-radius: 10px;
-  border: 1px dotted black;
-`;
+// const UserInput = styled.input`
+//   font-size: 15px;
+//   width: 100px;
+//   border: 1px dotted black;
+//   border-radius: 50px;
+//   padding: 5px 10px;
+//   border-radius: 10px;
+//   border: 1px dotted black;
+// `;
 
 const StTitleInput = styled.input`
   font-size: 18px;
   font-weight: 500;
-  width: 99%;
+  width: 98%;
   padding: 5px 10px;
   border-radius: 10px;
-  border: 1px dotted black;
+  background-color: RGB(225, 231, 255);
+  border: none;
+  &:focus {
+    background-color: RGB(205, 211, 255);
+    outline: none;
+  }
 `;
 const StContentInput = styled.textarea`
   resize: none;
   padding: 20px;
   font-size: 15px;
   min-height: 150px;
-  width: 93%;
+  width: 95%;
   border-radius: 13px;
-  border: 1px dotted black;
+  background-color: RGB(225, 231, 255);
+  border: none;
+  &:focus {
+    background-color: RGB(205, 211, 255);
+    outline: none;
+  }
+`;
+
+const StSelect = styled.select`
+  -webkit-appearance: none; /* for chrome */
+  -moz-appearance: none; /*for firefox*/
+  appearance: none;
+  text-align-last: center;
+  border-radius: 20px;
+  border: 1px solid black;
+  width: 100px;
+  height: 30px;
+  padding: 0px 20px;
+  background-color: RGB(225, 231, 255);
+  border: none;
+  &:focus {
+    background-color: RGB(205, 211, 255);
+    outline: none;
+  }
 `;
