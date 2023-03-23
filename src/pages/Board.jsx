@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { StHeaderTitle, StPage, SubHeader } from "../GlobalStyles";
+import { StHeaderTitle, StLayout, StPage, SubHeader } from "../GlobalStyles";
 import BoardPagination from "../redux/components/boardComponents/BoardPagination";
 import BoardTable from "../redux/components/boardComponents/BoardTable";
 import Button from "../redux/components/Buttons";
@@ -50,6 +50,7 @@ function Board() {
   return (
     <>
       <StPage>
+        <StLayout>
         <RelativeBox>
           <SubHeader>
             <StHeaderTitle>Board&nbsp;&nbsp;&nbsp;</StHeaderTitle>
@@ -62,7 +63,7 @@ function Board() {
             />
           </SubHeader>
 
-          <div>
+          <StBoard>
             <BoardTable board={postsData(board)} />
 
             <BoardPagination
@@ -71,8 +72,9 @@ function Board() {
               totalPosts={board.length}
               setPage={setPage}
             />
-          </div>
+          </StBoard>
         </RelativeBox>
+        </StLayout>
       </StPage>
     </>
   );
@@ -92,3 +94,6 @@ const RelativeBox = styled.div`
   min-height: 800px;
   /* min-width: 500px; */
 `;
+const StBoard= styled.div`
+  height: 10px;
+`

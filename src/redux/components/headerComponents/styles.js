@@ -6,13 +6,16 @@ const StyledHeader = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  height: 80px;
+  height: auto;
   padding: 20px 0;
   font-size: 1.3rem;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   flex-direction: column;
+  z-index: 50;
+  background-color: white;
+  opacity: 0.8;
 `;
 
 const HeaderNav = styled.nav`

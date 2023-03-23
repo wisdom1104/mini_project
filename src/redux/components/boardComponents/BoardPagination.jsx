@@ -75,7 +75,7 @@ const Pagination = styled.div`
   /* background-color: brown; */
   display: flex;
   justify-content: center;
-  margin: 30px;
+  /* margin: 10px; */
   position: absolute;
   bottom: 0;
   left: 40%;
