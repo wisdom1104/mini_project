@@ -1,0 +1,487 @@
+{
+  "board": [
+    {
+      "title": "바나나우유",
+      "classNumber": "13기",
+      "specialty": "Spring",
+      "createdAt": "2023-03-14T16:27:25.953604",
+      "nickname": "멘토스",
+      "id": 1
+    },
+    {
+      "title": "바나나우유",
+      "classNumber": "13기",
+      "specialty": "Spring",
+      "createdAt": "2023-03-14T16:27:25.953604",
+      "nickname": "멘토스",
+      "id": 2
+    },
+    {
+      "title": "바나나우유",
+      "classNumber": "13기",
+      "specialty": "Spring",
+      "createdAt": "2023-03-14T16:27:25.953604",
+      "nickname": "멘토스",
+      "id": 3
+    },
+    {
+      "title": "바나나우유",
+      "classNumber": "13기",
+      "specialty": "Spring",
+      "createdAt": "2023-03-14T16:27:25.953604",
+      "nickname": "멘토스",
+      "id": 4
+    },
+    {
+      "title": "바나나우유",
+      "classNumber": "13기",
+      "specialty": "Spring",
+      "createdAt": "2023-03-14T16:27:25.953604",
+      "nickname": "멘토스",
+      "id": 5
+    },
+    {
+      "title": "바나나우유",
+      "classNumber": "13기",
+      "specialty": "Spring",
+      "createdAt": "2023-03-14T16:27:25.953604",
+      "nickname": "멘토스",
+      "id": 6
+    },
+    {
+      "title": "바나나우유",
+      "classNumber": "13기",
+      "specialty": "Spring",
+      "createdAt": "2023-03-14T16:27:25.953604",
+      "nickname": "멘토스",
+      "id": 7
+    },
+    {
+      "title": "바나나우유",
+      "classNumber": "13기",
+      "specialty": "Spring",
+      "createdAt": "2023-03-14T16:27:25.953604",
+      "nickname": "멘토스",
+      "id": 8
+    },
+    {
+      "title": "바나나우유",
+      "classNumber": "13기",
+      "specialty": "Spring",
+      "createdAt": "2023-03-14T16:27:25.953604",
+      "nickname": "멘토스",
+      "id": 9
+    },
+    {
+      "title": "바나나우유",
+      "classNumber": "13기",
+      "specialty": "Spring",
+      "createdAt": "2023-03-14T16:27:25.953604",
+      "nickname": "멘토스",
+      "id": 10
+    },
+    {
+      "title": "바나나우유",
+      "classNumber": "13기",
+      "specialty": "Spring",
+      "createdAt": "2023-03-14T16:27:25.953604",
+      "nickname": "멘토스",
+      "id": 11
+    },
+    {
+      "title": "바나나우유",
+      "classNumber": "13기",
+      "specialty": "Spring",
+      "createdAt": "2023-03-14T16:27:25.953604",
+      "nickname": "멘토스",
+      "id": 12
+    },
+    {
+      "title": "바나나우유",
+      "classNumber": "13기",
+      "specialty": "Spring",
+      "createdAt": "2023-03-14T16:27:25.953604",
+      "nickname": "멘토스",
+      "id": 13
+    },
+    {
+      "title": "바나나우유",
+      "classNumber": "13기",
+      "specialty": "Spring",
+      "createdAt": "2023-03-14T16:27:25.953604",
+      "nickname": "멘토스",
+      "id": 14
+    },
+    {
+      "title": "바나나우유",
+      "classNumber": "13기",
+      "specialty": "Spring",
+      "createdAt": "2023-03-14T16:27:25.953604",
+      "nickname": "멘토스",
+      "id": 15
+    },
+    {
+      "title": "바나나우유",
+      "classNumber": "13기",
+      "specialty": "Spring",
+      "createdAt": "2023-03-14T16:27:25.953604",
+      "nickname": "멘토스",
+      "id": 16
+    },
+    {
+      "title": "바나나우유",
+      "classNumber": "13기",
+      "specialty": "Spring",
+      "createdAt": "2023-03-14T16:27:25.953604",
+      "nickname": "멘토스",
+      "id": 17
+    },
+    {
+      "title": "바나나우유",
+      "classNumber": "13기",
+      "specialty": "Spring",
+      "createdAt": "2023-03-14T16:27:25.953604",
+      "nickname": "멘토스",
+      "id": 18
+    }
+  ],
+  "detail": [
+    {
+      "title": "글제목1",
+      "content": "글 내용1",
+      "createdAt": "2023-03-14T16:27:25.953604",
+      "nickname": "멘토스",
+      "classNumber": "13기1",
+      "specialty": "Spring1",
+      "id": 1,
+      "commentList": [
+        {
+          "comment": "댓글내용",
+          "createdAt": "2023-03-14T16:27:25.953604",
+          "id": 1,
+          "nickname": "피카츄"
+        },
+        {
+          "comment": "댓글내용",
+          "createdAt": "2023-03-14T16:27:25.953604",
+          "id": 2,
+          "nickname": "피카츄"
+        }
+      ]
+    },
+    {
+      "title": "글제목2",
+      "content": "글 내용2",
+      "createdAt": "2023-03-14T16:27:25.953604",
+      "nickname": "멘토스",
+      "classNumber": "13기2",
+      "specialty": "Spring2",
+      "id": 2,
+      "commentList": [
+        {
+          "comment": "댓글내용",
+          "createdAt": "2023-03-14T16:27:25.953604",
+          "id": 1,
+          "nickname": "피카츄"
+        },
+        {
+          "comment": "댓글내용",
+          "createdAt": "2023-03-14T16:27:25.953604",
+          "id": 2,
+          "nickname": "피카츄"
+        }
+      ]
+    },
+    {
+      "title": "글제목3",
+      "content": "글 내용3",
+      "createdAt": "2023-03-14T16:27:25.953604",
+      "nickname": "멘토스",
+      "classNumber": "13기3",
+      "specialty": "Spring3",
+      "id": 3,
+      "commentList": [
+        {
+          "comment": "댓글내용",
+          "createdAt": "2023-03-14T16:27:25.953604",
+          "id": 1,
+          "nickname": "피카츄"
+        },
+        {
+          "comment": "댓글내용",
+          "createdAt": "2023-03-14T16:27:25.953604",
+          "id": 2,
+          "nickname": "피카츄"
+        }
+      ]
+    }
+  ],
+  "write": [
+    {
+      "id": 1,
+      "classNumber": "1",
+      "specialty": "2",
+      "title": "3",
+      "content": "4"
+    },
+    {
+      "classNumber": "1",
+      "specialty": "2",
+      "title": "3",
+      "content": "3",
+      "id": 2
+    },
+    {
+      "classNumber": "123",
+      "specialty": "gefdgg",
+      "title": "fg",
+      "content": "grfge",
+      "id": 3
+    }
+    ],
+  "signup": [
+    {
+      "id": "",
+      "username": "hanghae99",
+      "password": "pass!@#word",
+      "passwordCheck": "pass!@#word",
+      "nickname": "2조가즈아",
+      "email": "hang99@hae.com",
+      "admin": true,
+      "admintoken": "team@admin"
+    },
+    {
+      "id": "",
+      "username": "박지혜",
+      "password": "1234",
+      "passwordCheck": "1234",
+      "nickname": "지혜짱짱",
+      "email": "jihye@gmail.com",
+      "admin": false,
+      "admintoken": ""
+    },
+    {
+      "id": "",
+      "username": "이은형",
+      "password": "1234",
+      "passwordCheck": "1234",
+      "nickname": "리액트야 미안해",
+      "email": "ehlee@gamil.com",
+      "admin": false,
+      "admintoken": ""
+    },
+    {
+      "id": "",
+      "username": "김건율",
+      "password": "1234",
+      "passwordCheck": "1234",
+      "nickname": "건율슈퍼맨",
+      "email": "kky@gmail.com",
+      "admin": false,
+      "admintoken": ""
+    },
+    {
+      "id": "",
+      "username": "이승빈",
+      "password": "1234",
+      "passwordCheck": "1234",
+      "nickname": "모든 것의 신 이승빈",
+      "email": "lsb@gmail.com",
+      "admin": false,
+      "admintoken": ""
+    },
+    {
+      "id": "",
+      "username": "장동희",
+      "password": "1234",
+      "passwordCheck": "1234",
+      "nickname": "무적장동희",
+      "email": "jdh@gmail.com",
+      "admin": false,
+      "admintoken": ""
+    },
+    {
+      "id": "YEkArvY",
+      "username": "이승빈23",
+      "password": "123",
+      "passwordCheck": "123",
+      "nickname": "무적장동희2",
+      "email": "sdfdsf@naver.com",
+      "admin": false,
+      "admintoken": ""
+    },
+    {
+      "id": "HPJ5WFI",
+      "username": "이은형23",
+      "password": "1234",
+      "passwordCheck": "1234",
+      "nickname": "닉네임",
+      "email": "12345",
+      "admin": false,
+      "admintoken": ""
+    },
+    {
+      "id": "9Ihm3ZO",
+      "username": "test1",
+      "password": "1234",
+      "passwordCheck": "1234",
+      "nickname": "test1",
+      "email": "1234",
+      "admin": false,
+      "admintoken": ""
+    },
+    {
+      "id": "MeTCJiC",
+      "username": "test2",
+      "password": "1234",
+      "passwordCheck": "1234",
+      "nickname": "test2",
+      "email": "123456",
+      "admin": false,
+      "admintoken": ""
+    },
+    {
+      "user": {
+        "id": "",
+        "username": "청크테스트",
+        "password": "1234",
+        "passwordCheck": "1234",
+        "nickname": "1234",
+        "email": "123466",
+        "admin": false,
+        "admintoken": ""
+      },
+      "id": "6o39ALB"
+    },
+    {
+      "user": {
+        "id": "",
+        "username": "test4",
+        "password": "1234",
+        "passwordCheck": "1234",
+        "nickname": "4363463",
+        "email": "23432",
+        "admin": false,
+        "admintoken": ""
+      },
+      "id": "5ARqMdk"
+    },
+    {
+      "id": "pD4_Ahs"
+    },
+    {
+      "user": {
+        "username": "test10",
+        "password": "1234",
+        "passwordCheck": "1234",
+        "nickname": "test",
+        "email": "123455562",
+        "admin": false,
+        "admintoken": ""
+      },
+      "id": "xEfe-i1"
+    },
+    {
+      "username": "trycatchtest",
+      "password": "1234",
+      "passwordCheck": "1234",
+      "nickname": "1234",
+      "email": "12344",
+      "admin": false,
+      "admintoken": "",
+      "id": "lJNLygG"
+    },
+    {
+      "username": "test6",
+      "password": "1234",
+      "passwordCheck": "1234",
+      "nickname": "rkskekfk",
+      "email": "rksfksdf",
+      "admin": false,
+      "admintoken": "",
+      "id": "s5oMh3k"
+    },
+    {
+      "id": "_l_8S4l",
+      "username": "test11",
+      "password": "1234",
+      "passwordCheck": "1234",
+      "nickname": "sdjsd;fk",
+      "email": "sdfsdfds",
+      "admin": false,
+      "admintoken": ""
+    },
+    {
+      "id": "VlhR57v",
+      "username": "123123",
+      "password": "1234",
+      "passwordCheck": "1234",
+      "nickname": "tttt",
+      "email": "123453434",
+      "admin": false,
+      "admintoken": ""
+    }
+  ],
+  "login": [
+    {
+      "id": "",
+      "username": "hanghae99",
+      "password": "pass!@#word"
+    },
+    {
+      "id": "hSCByQf",
+      "username": "1234",
+      "password": "1234"
+    },
+    {
+      "id": "wuE3G1I",
+      "username": "1234",
+      "password": "1234"
+    },
+    {
+      "id": "6nOGTvA",
+      "username": "44",
+      "password": "44"
+    },
+    {
+      "id": "uS3Xm1q",
+      "username": "22",
+      "password": "2222"
+    },
+    {
+      "id": "_SARRz9",
+      "username": "1234",
+      "password": "2222"
+    },
+    {
+      "id": "y2l6a9B",
+      "username": "",
+      "password": ""
+    },
+    {
+      "id": "bp66k2t",
+      "username": "1234",
+      "password": "1234"
+    },
+    {
+      "id": "M67082g",
+      "username": "1234",
+      "password": "1234"
+    },
+    {
+      "id": "yshJr6D",
+      "username": "12",
+      "password": "12"
+    },
+    {
+      "id": "uFAfFYG",
+      "username": "",
+      "password": ""
+    },
+    {
+      "id": "zct7y7f",
+      "username": "1234",
+      "password": "1234"
+    }
+  ]
+}
